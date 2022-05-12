@@ -9,11 +9,18 @@ public class Order {
 	private LocalDateTime date;
 	private boolean paymentStatus;
 	private ArrayList<OrderLine> orderLines;
+	private Table table;
+	private Employee employee;
 	
-	public Order() {
+	public Order(Employee employee) {
+	this.employee = employee;
 	date = LocalDateTime.now();
 	orderLines = new ArrayList<OrderLine>();
 	
-	//TODO: Add id
+	//TODO: Add id via db?
+	}
+	
+	public void setTable(Table table) {
+		this.table = table;
 	}
 }

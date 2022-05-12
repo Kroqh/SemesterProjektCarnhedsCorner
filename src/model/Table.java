@@ -13,4 +13,18 @@ public class Table {
 		return currentOrder;
 	}
 	
+	public Table(int tableID) {
+		this.tableID = tableID;
+	}
+	public int getTableID() {
+		return tableID;
+	}
+	public void setActive(Order order) {
+		active = true;
+		currentOrder = order;
+	}
+	public void setInactive() {
+		active = false;
+		currentOrder = null;
+	}
 }
