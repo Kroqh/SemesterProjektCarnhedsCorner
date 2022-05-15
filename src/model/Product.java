@@ -17,5 +17,8 @@ public class Product {
 	public int getID() {
 		return id;
 	}
+	public float GetPrice() {
+		return price;
+	}
 	
 }

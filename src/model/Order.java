@@ -5,7 +5,6 @@ import java.util.ArrayList;
 public class Order {
 
 	private int orderID;
-	private float totalPrice;
 	private LocalDateTime date;
 	private boolean paymentStatus;
 	private ArrayList<OrderLine> orderLines;
@@ -16,8 +15,10 @@ public class Order {
 	this.employee = employee;
 	date = LocalDateTime.now();
 	orderLines = new ArrayList<OrderLine>();
-	
-	//TODO: Add id via db?
+	}
+	public void addOrderLine(Product product, int quantity) {
+		OrderLine orderLine = new OrderLine(product,quantity);
+		orderLines.add(orderLine);
 	}
 	
 	public void setTable(Table table) {
@@ -25,6 +26,12 @@ public class Order {
 	}
 
 	public float getTotalPrice() {
+		
+		float totalPrice = 0;
+		for(OrderLine orderLine : orderLines) {
+			totalPrice += orderLine.getProduct().GetPrice() * orderLine.getQuantity();
+		}
+		
 		return totalPrice;
 	}
 
