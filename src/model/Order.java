@@ -23,4 +23,21 @@ public class Order {
 	public void setTable(Table table) {
 		this.table = table;
 	}
+
+	public float getTotalPrice() {
+		return totalPrice;
+	}
+
+	public LocalDateTime getDate() {
+		return date;
+	}
+
+	public ArrayList<OrderLine> getOrderLines() {
+		return orderLines;
+	}
+
+	public boolean isPaymentStatus() {
+		return paymentStatus;
+	}
+	
 }

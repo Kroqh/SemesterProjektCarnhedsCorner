@@ -38,18 +38,18 @@ public class ProductDB {
 			
 			switch (type) {
 			case "menu":
-				product = new Menu(price, name, type);
+				product = new Menu(price, name, type, id);
 				break;
 			case "dish":
 				boolean vegetarian = rs.getBoolean("vegetarian");
-				product = new Dish(price, name, type, vegetarian);
+				product = new Dish(price, name, type, vegetarian, id);
 				break;
 			case "ingredient":
-				product = new Ingredient(price, name, type);
+				product = new Ingredient(price, name, type, id);
 				break;
 			case "drink":
 				float alcPercent = rs.getFloat("alcPercent");
-				product = new Drink(price, name, type, alcPercent);
+				product = new Drink(price, name, type, alcPercent, id);
 				break;
 			}
 			stmt.close();
