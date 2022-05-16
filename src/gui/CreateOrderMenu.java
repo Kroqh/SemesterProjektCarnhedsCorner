@@ -188,7 +188,7 @@ public class CreateOrderMenu extends JDialog {
 
 	public void init() {
 		OrderController orderController = new OrderController();
-		orderController.CreateOrder(null);
+		orderController.createOrder(null);
 		order = orderController.getCurrentOrder();
 	}
 	

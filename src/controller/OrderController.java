@@ -26,6 +26,9 @@ public class OrderController {
 	
 	public void addProductToOrder(int productID, int quantity) throws Exception {
 		Product product = productController.findProductByID(productID);
+		if (product == null) {
+			throw new NullPointerException("Product null???");
+		}
 		currentOrder.addOrderLine(product, quantity);
 	}
 	public void saveOrder(float payAmount) throws DataAccessException, InsufficientPaymentException {

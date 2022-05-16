@@ -19,13 +19,14 @@ public class Order {
 	public void addOrderLine(Product product, int quantity) {
 		boolean found = false;
 		int i = 0;
-		while(found = false && i < orderLines.size()) {
-			i++;
+		while(orderLines.size() != 0 && found == false && i <= orderLines.size() ) {
+			
 			if(orderLines.get(i).getProduct() == product) {
 				found = true;
 				orderLines.get(i).addQuantity(quantity);
 						
 			}
+			i++;
 		}
 		if (!found) {
 			OrderLine orderLine = new OrderLine(product,quantity);
