@@ -24,11 +24,6 @@ public class OrderController {
 			currentOrder.setTable(tableController.SelectTable(tableID,currentOrder));
 	}
 	
-	//Used for tests
-	public Order getCurrentOrder() {
-		return currentOrder;
-	}
-	
 	public void addProductToOrder(int productID, int quantity) throws Exception {
 		Product product = productController.findProductByID(productID);
 		currentOrder.addOrderLine(product, quantity);
