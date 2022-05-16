@@ -31,6 +31,9 @@ public class OrderDB {
 			
 		
 			ArrayList orderLines = order.getOrderLines();
+			
+			
+			
 			for (int i=0; i<orderLines.size(); i++) {
 				OrderLine orderLine = (OrderLine) orderLines.get(i);
 				orderLineDB.saveOrderLine(orderLine, insertedKey);

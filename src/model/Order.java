@@ -21,7 +21,7 @@ public class Order {
 		int i = 0;
 		while(orderLines.size() != 0 && found == false && i < orderLines.size() ) {
 			
-			if(orderLines.get(i).getProduct() == product) {
+			if(orderLines.get(i).getProduct().getID() == product.getID()) {
 				found = true;
 				orderLines.get(i).addQuantity(quantity);
 						
