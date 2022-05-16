@@ -1,5 +1,6 @@
 package model;
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 
 public class Order {
@@ -14,6 +15,8 @@ public class Order {
 	public Order(Employee employee) {
 	this.employee = employee;
 	date = LocalDateTime.now();
+	date = date.truncatedTo(ChronoUnit.MINUTES);
+	
 	orderLines = new ArrayList<OrderLine>();
 	}
 	public void addOrderLine(Product product, int quantity) {
@@ -21,7 +24,7 @@ public class Order {
 		int i = 0;
 		while(orderLines.size() != 0 && found == false && i < orderLines.size() ) {
 			
-			if(orderLines.get(i).getProduct() == product) {
+			if(orderLines.get(i).getProduct().getID() == product.getID()) {
 				found = true;
 				orderLines.get(i).addQuantity(quantity);
 						
