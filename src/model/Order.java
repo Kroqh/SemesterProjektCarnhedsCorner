@@ -56,6 +56,9 @@ public class Order {
 		return orderLines;
 	}
 
+	public void setPaymentStatus(boolean isPayed) {
+		paymentStatus = isPayed;
+	}
 	public boolean isPaymentStatus() {
 		return paymentStatus;
 	}
