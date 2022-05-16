@@ -29,7 +29,7 @@ public class Order {
 		
 		float totalPrice = 0;
 		for(OrderLine orderLine : orderLines) {
-			totalPrice += orderLine.getProduct().GetPrice() * orderLine.getQuantity();
+			totalPrice += orderLine.getProduct().getPrice() * orderLine.getQuantity();
 		}
 		
 		return totalPrice;

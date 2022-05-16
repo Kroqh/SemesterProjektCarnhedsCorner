@@ -17,8 +17,12 @@ public class Product {
 	public int getID() {
 		return id;
 	}
-	public float GetPrice() {
+	public float getPrice() {
 		return price;
+	}
+	
+	public String getName() {
+		return name;
 	}
 	
 }

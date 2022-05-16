@@ -36,4 +36,12 @@ public class OrderController {
 			throw new InsufficientPaymentException("Insufficient payment");
 		}
 	}
+	
+	public Order getCurrentOrder() {
+		return currentOrder;
+	}
+	
+	public void setCurrentOrder(Order order) {
+		currentOrder = order;
+	}
 }	
