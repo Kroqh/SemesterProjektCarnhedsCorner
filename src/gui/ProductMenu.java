@@ -87,6 +87,7 @@ public class ProductMenu extends JDialog {
 					JLabel lblProductID = new JLabel("");
 					panel_1.add(lblProductID);
 					lblProductID.setVisible(false);
+					labelsID.add(lblProductID);
 				}
 				{
 					JLabel lblProduct1_Name = new JLabel("New label");

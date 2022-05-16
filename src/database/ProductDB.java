@@ -48,7 +48,7 @@ public class ProductDB {
 			case "ingrediens":
 				product = new Ingredient(price, name, type, id);
 				break;
-			case "drink":
+			case "drinkke":
 				float alcPercent = rs.getFloat("alcPercent");
 				product = new Drink(price, name, type, alcPercent, id);
 				break;
@@ -78,36 +78,47 @@ public class ProductDB {
 		
 		try {
 			PreparedStatement stmt = con.prepareStatement(baseSelect);
-			stmt.setString(1, type);
+			stmt.setString(0+1, type);
 			rs = stmt.executeQuery();
 			while(rs.next()) {
+				//rs.next();
 				name = rs.getString("name");
 				price = rs.getFloat("price");
-				id = rs.getInt(id);
+				id = rs.getInt("id");
 				
 				switch (type) {
 				case "menu":
 					product = new Menu(price, name, type, id);
 					break;
 				case "dish":
+					//int vegetarian = rs.getInt("vegetarian");
+					//boolean vegetarian = byteToBoolean(vegetarianInt);
 					boolean vegetarian = rs.getBoolean("vegetarian");
 					product = new Dish(price, name, type, vegetarian, id);
 					break;
-				case "ingredient":
+				case "ingrediens":
 					product = new Ingredient(price, name, type, id);
 					break;
-				case "drink":
+				case "drikke":
 					float alcPercent = rs.getFloat("alcPercent");
 					product = new Drink(price, name, type, alcPercent, id);
 					break;
 				}
 				products.add(product);
+				rs.next();
 			}
 			stmt.close();
-			con.commit();
 		} catch (SQLException e) {
 			throw e;
 		}
 		return products;
+	}
+	
+	public boolean byteToBoolean(int val) {
+		boolean bool = false;
+		if(val != 0) {
+			bool = true;
+		}
+		return bool;
 	}
 }

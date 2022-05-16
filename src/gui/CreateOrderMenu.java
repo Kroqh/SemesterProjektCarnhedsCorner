@@ -68,7 +68,7 @@ public class CreateOrderMenu extends JDialog {
 				btnAppetizers.addMouseListener(new MouseAdapter() {
 					@Override
 					public void mouseClicked(MouseEvent e) {
-						String type = "Appetizer";
+						String type = "dish";
 						try {
 							productMenu(type);
 						} catch (SQLException e1) {

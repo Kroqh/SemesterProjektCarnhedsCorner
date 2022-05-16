@@ -12,8 +12,7 @@ public class OrderLineDB {
 		
 		Connection con = DBConnection.getInstance().getConnection();
 		
-		String baseInsert = "insert into CHC_OrderLines (fk_OrderID, fk_ProductID, quantity) values";
-		baseInsert += "(?, ?, ?);";
+		String baseInsert = "insert into CHC_OrderLines (fk_OrderID, fk_ProductID, quantity) values(?, ?, ?);";
 		
 		try {
 			PreparedStatement stmt = con.prepareStatement(baseInsert);
