@@ -45,7 +45,7 @@ public class ProductDB {
 				boolean vegetarian = rs.getBoolean("vegetarian");
 				product = new Dish(price, name, type, vegetarian, id);
 				break;
-			case "ingredient":
+			case "ingrediens":
 				product = new Ingredient(price, name, type, id);
 				break;
 			case "drink":
