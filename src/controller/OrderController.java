@@ -17,11 +17,11 @@ public class OrderController {
 		orderDB = new OrderDB();
 	}
 	
-	public void CreateOrder(Employee employee) {
+	public void createOrder(Employee employee) {
 		currentOrder = new Order(employee);
 	}
-	public void selectTable(int tableID) {
-		currentOrder.setTable(tableController.SelectTable(tableID,currentOrder));
+	public void selectTable(int tableID) throws NullPointerException {
+			currentOrder.setTable(tableController.SelectTable(tableID,currentOrder));
 	}
 	
 	public void addProductToOrder(int productID, int quantity) throws Exception {
@@ -30,6 +30,7 @@ public class OrderController {
 	}
 	public void saveOrder(float payAmount) throws DataAccessException, InsufficientPaymentException {
 		if (payAmount >= currentOrder.getTotalPrice()) {
+			currentOrder.setPaymentStatus(true);
 			orderDB.saveOrder(currentOrder);
 		}
 		else {

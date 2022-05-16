@@ -18,6 +18,10 @@ public class TableContainer {
         }
         return instance;
     }
+    public void addTable() {
+    	Table table = new Table(tables.size());
+    	tables.add(table);
+    }
     
      public  Table findTableByID(int tableID){
         boolean found = false;
