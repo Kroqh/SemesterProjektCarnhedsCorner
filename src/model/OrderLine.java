@@ -12,6 +12,9 @@ public class OrderLine {
 	public int getQuantity() {
 		return quantity;
 	}
+	public void addQuantity(int amount) {
+		quantity += amount; 
+	}
 	public Product getProduct() {
 		return product;
 	}
