@@ -17,8 +17,21 @@ public class Order {
 	orderLines = new ArrayList<OrderLine>();
 	}
 	public void addOrderLine(Product product, int quantity) {
-		OrderLine orderLine = new OrderLine(product,quantity);
-		orderLines.add(orderLine);
+		boolean found = false;
+		int i = 0;
+		while(found = false && i < orderLines.size()) {
+			i++;
+			if(orderLines.get(i).getProduct() == product) {
+				found = true;
+				orderLines.get(i).addQuantity(quantity);
+						
+			}
+		}
+		if (!found) {
+			OrderLine orderLine = new OrderLine(product,quantity);
+			orderLines.add(orderLine);
+		}
+		
 	}
 	
 	public void setTable(Table table) {
