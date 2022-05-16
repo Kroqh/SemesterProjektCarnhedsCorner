@@ -1,5 +1,6 @@
 package model;
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 
 public class Order {
@@ -14,6 +15,8 @@ public class Order {
 	public Order(Employee employee) {
 	this.employee = employee;
 	date = LocalDateTime.now();
+	date = date.truncatedTo(ChronoUnit.MINUTES);
+	
 	orderLines = new ArrayList<OrderLine>();
 	}
 	public void addOrderLine(Product product, int quantity) {
