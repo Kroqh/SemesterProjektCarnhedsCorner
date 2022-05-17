@@ -84,10 +84,10 @@ public class ProductMenu extends JDialog {
 					panel_1.add(btnProduct1);
 				}
 				{
-					JLabel lblProductID = new JLabel("");
-					panel_1.add(lblProductID);
-					lblProductID.setVisible(false);
-					labelsID.add(lblProductID);
+					JLabel lblProductID1 = new JLabel("");
+					panel_1.add(lblProductID1);
+					lblProductID1.setVisible(false);
+					labelsID.add(lblProductID1);
 				}
 				{
 					JLabel lblProduct1_Name = new JLabel("New label");
@@ -120,10 +120,10 @@ public class ProductMenu extends JDialog {
 					panel_2.add(btnProduct2);
 				}
 				{
-					JLabel lblProductID = new JLabel("");
-					panel_2.add(lblProductID);
-					lblProductID.setVisible(false);
-					labelsID.add(lblProductID);
+					JLabel lblProductID2 = new JLabel("");
+					panel_2.add(lblProductID2);
+					lblProductID2.setVisible(false);
+					labelsID.add(lblProductID2);
 				}
 				{
 					JLabel lblProduct2_Name = new JLabel("New label");
@@ -156,10 +156,10 @@ public class ProductMenu extends JDialog {
 					panel_3.add(btnProduct3);
 				}
 				{
-					JLabel lblProductID = new JLabel("");
-					panel_3.add(lblProductID);
-					lblProductID.setVisible(false);
-					labelsID.add(lblProductID);
+					JLabel lblProductID3 = new JLabel("");
+					panel_3.add(lblProductID3);
+					lblProductID3.setVisible(false);
+					labelsID.add(lblProductID3);
 				}
 				{
 					JLabel lblProduct3_Name = new JLabel("New label");
@@ -193,10 +193,10 @@ public class ProductMenu extends JDialog {
 					panel_4.add(btnProduct4);
 				}
 				{
-					JLabel lblProductID = new JLabel("");
-					panel_4.add(lblProductID);
-					lblProductID.setVisible(false);
-					labelsID.add(lblProductID);
+					JLabel lblProductID4 = new JLabel("");
+					panel_4.add(lblProductID4);
+					lblProductID4.setVisible(false);
+					labelsID.add(lblProductID4);
 				}
 				{
 					JLabel lblProduct4_Name = new JLabel("New label");
@@ -229,10 +229,10 @@ public class ProductMenu extends JDialog {
 					panel_5.add(btnProduct5);
 				}
 				{
-					JLabel lblProductID = new JLabel("");
-					panel_5.add(lblProductID);
-					lblProductID.setVisible(false);
-					labelsID.add(lblProductID);
+					JLabel lblProductID5 = new JLabel("");
+					panel_5.add(lblProductID5);
+					lblProductID5.setVisible(false);
+					labelsID.add(lblProductID5);
 				}
 				{
 					JLabel lblProduct5_Name = new JLabel("New label");
@@ -265,10 +265,10 @@ public class ProductMenu extends JDialog {
 					panel_6.add(btnProduct6);
 				}
 				{
-					JLabel lblProductID = new JLabel("");
-					panel_6.add(lblProductID);
-					lblProductID.setVisible(false);
-					labelsID.add(lblProductID);
+					JLabel lblProductID6 = new JLabel("");
+					panel_6.add(lblProductID6);
+					lblProductID6.setVisible(false);
+					labelsID.add(lblProductID6);
 				}
 				{
 					JLabel lblProduct6_Name = new JLabel("New label");
@@ -301,10 +301,10 @@ public class ProductMenu extends JDialog {
 					panel_7.add(btnProduct7);
 				}
 				{
-					JLabel lblProductID = new JLabel("");
-					panel_7.add(lblProductID);
-					lblProductID.setVisible(false);
-					labelsID.add(lblProductID);
+					JLabel lblProductID7 = new JLabel("");
+					panel_7.add(lblProductID7);
+					lblProductID7.setVisible(false);
+					labelsID.add(lblProductID7);
 				}
 				{
 					JLabel lblProduct7_Name = new JLabel("New label");
@@ -337,10 +337,10 @@ public class ProductMenu extends JDialog {
 					panel_8.add(btnProduct8);
 				}
 				{
-					JLabel lblProductID = new JLabel("");
-					panel_8.add(lblProductID);
-					lblProductID.setVisible(false);
-					labelsID.add(lblProductID);
+					JLabel lblProductID8 = new JLabel("");
+					panel_8.add(lblProductID8);
+					lblProductID8.setVisible(false);
+					labelsID.add(lblProductID8);
 				}
 				{
 					JLabel lblProduct8_Name = new JLabel("New label");
@@ -373,10 +373,10 @@ public class ProductMenu extends JDialog {
 					panel_9.add(btnProduct9);
 				}
 				{
-					JLabel lblProductID = new JLabel("");
-					panel_9.add(lblProductID);
-					lblProductID.setVisible(false);
-					labelsID.add(lblProductID);
+					JLabel lblProductID9 = new JLabel("");
+					panel_9.add(lblProductID9);
+					lblProductID9.setVisible(false);
+					labelsID.add(lblProductID9);
 				}
 				{
 					JLabel lblProduct9_Name = new JLabel("New label");
@@ -409,10 +409,10 @@ public class ProductMenu extends JDialog {
 					panel_10.add(btnProduct10);
 				}
 				{
-					JLabel lblProductID = new JLabel("");
-					panel_10.add(lblProductID);
-					lblProductID.setVisible(false);
-					labelsID.add(lblProductID);
+					JLabel lblProductID10 = new JLabel("");
+					panel_10.add(lblProductID10);
+					lblProductID10.setVisible(false);
+					labelsID.add(lblProductID10);
 				}
 				{
 					JLabel lblProduct10_Name = new JLabel("New label");
@@ -445,10 +445,10 @@ public class ProductMenu extends JDialog {
 					panel_11.add(btnProduct11);
 				}
 				{
-					JLabel lblProductID = new JLabel("");
-					panel_11.add(lblProductID);
-					lblProductID.setVisible(false);
-					labelsID.add(lblProductID);
+					JLabel lblProductID11 = new JLabel("");
+					panel_11.add(lblProductID11);
+					lblProductID11.setVisible(false);
+					labelsID.add(lblProductID11);
 				}
 				{
 					JLabel lblProduct11_Name = new JLabel("New label");
@@ -481,10 +481,10 @@ public class ProductMenu extends JDialog {
 					panel_12.add(btnProduct12);
 				}
 				{
-					JLabel lblProductID = new JLabel("");
-					panel_12.add(lblProductID);
-					lblProductID.setVisible(false);
-					labelsID.add(lblProductID);
+					JLabel lblProductID12 = new JLabel("");
+					panel_12.add(lblProductID12);
+					lblProductID12.setVisible(false);
+					labelsID.add(lblProductID12);
 				}
 				{
 					JLabel lblProduct12_Name = new JLabel("New label");
@@ -517,10 +517,10 @@ public class ProductMenu extends JDialog {
 					panel_13.add(btnProduct13);
 				}
 				{
-					JLabel lblProductID = new JLabel("");
-					panel_13.add(lblProductID);
-					lblProductID.setVisible(false);
-					labelsID.add(lblProductID);
+					JLabel lblProductID13 = new JLabel("");
+					panel_13.add(lblProductID13);
+					lblProductID13.setVisible(false);
+					labelsID.add(lblProductID13);
 				}
 				{
 					JLabel lblProduct13_Name = new JLabel("New label");
@@ -553,10 +553,10 @@ public class ProductMenu extends JDialog {
 					panel_14.add(btnProduct14);
 				}
 				{
-					JLabel lblProductID = new JLabel("");
-					panel_14.add(lblProductID);
-					lblProductID.setVisible(false);
-					labelsID.add(lblProductID);
+					JLabel lblProductID14 = new JLabel("");
+					panel_14.add(lblProductID14);
+					lblProductID14.setVisible(false);
+					labelsID.add(lblProductID14);
 				}
 				{
 					JLabel lblProduct14_Name = new JLabel("New label");
@@ -589,10 +589,10 @@ public class ProductMenu extends JDialog {
 					panel_15.add(btnProduct15);
 				}
 				{
-					JLabel lblProductID = new JLabel("");
-					panel_15.add(lblProductID);
-					lblProductID.setVisible(false);
-					labelsID.add(lblProductID);
+					JLabel lblProductID15 = new JLabel("");
+					panel_15.add(lblProductID15);
+					lblProductID15.setVisible(false);
+					labelsID.add(lblProductID15);
 				}
 				{
 					JLabel lblProduct15_Name = new JLabel("New label");
@@ -625,10 +625,10 @@ public class ProductMenu extends JDialog {
 					panel_16.add(btnProduct16);
 				}
 				{
-					JLabel lblProductID = new JLabel("");
-					panel_16.add(lblProductID);
-					lblProductID.setVisible(false);
-					labelsID.add(lblProductID);
+					JLabel lblProductID16 = new JLabel("");
+					panel_16.add(lblProductID16);
+					lblProductID16.setVisible(false);
+					labelsID.add(lblProductID16);
 				}
 				{
 					JLabel lblProduct16_Name = new JLabel("New label");
