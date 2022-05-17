@@ -6,7 +6,6 @@ import database.OrderDB;
 import model.Order;
 import model.OrderLine;
 import model.Product;
-import model.Table;
 
 public class OrderController {
 	private Order currentOrder;
@@ -20,13 +19,16 @@ public class OrderController {
 		orderDB = new OrderDB();
 	}
 	
-
-	public void createOrder(Table table) {
-		currentOrder = new Order(table);
+<<<<<<< HEAD
+	public void createOrder(Employee employee) {
+		currentOrder = new Order(employee);
 	}
-	
 	public void selectTable(int tableID) throws NullPointerException {
 		currentOrder.setTable(tableController.selectTable(tableID,currentOrder));
+=======
+	public void createOrder(int tableID) {
+		currentOrder = new Order(tableController.selectTable(tableID,currentOrder));
+>>>>>>> 1c732df86096f099ac1f0ac836d3ad6c1e182861
 	}
 	
 	public void addProductToOrder(int productID, int quantity) throws Exception {

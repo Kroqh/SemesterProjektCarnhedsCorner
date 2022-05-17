@@ -28,6 +28,7 @@ public class TableSelect extends JDialog {
 	private TableController tableController;
 	private JComboBox comboBox;
 	private ArrayList<Table> tables;
+	private Table table;
 
 
 	/**
@@ -85,7 +86,8 @@ public class TableSelect extends JDialog {
 //			public void run() {
 				int tableID = (int) comboBox.getSelectedItem();
 				tableController.setActiveTable(tableID);
-				CreateOrderMenu createOrderMenu = new CreateOrderMenu(tableID);
+				table = tables.get(tableID);
+				CreateOrderMenu createOrderMenu = new CreateOrderMenu(table);
 				this.dispose();
 				createOrderMenu.setVisible(true);
 //			}
@@ -105,7 +107,7 @@ public class TableSelect extends JDialog {
 	}
 
 	private void initializeComboBox(ArrayList<Table> tables) {
-		Table table = null;
+		table = null;
 		for(int i = 0; i < tables.size(); i++) {
 			table = tables.get(i);
 			if(table.isActive() == false) {
