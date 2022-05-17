@@ -13,7 +13,6 @@ public class TableController {
 			throw new NullPointerException("Table out of range");
 		}
 		
-		table.setActive(order);
 		return table;
 	}
 
