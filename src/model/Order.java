@@ -10,12 +10,11 @@ public class Order {
 	private boolean paymentStatus;
 	private ArrayList<OrderLine> orderLines;
 	private Table table;
-	private Employee employee;
 	
-	public Order(Employee employee) {
-		this.employee = employee;
+	public Order(Table table) {
 		date = LocalDateTime.now();
 		date = date.truncatedTo(ChronoUnit.MINUTES);
+		this.table = table;
 	
 		orderLines = new ArrayList<OrderLine>();
 	}
