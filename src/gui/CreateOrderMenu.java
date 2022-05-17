@@ -13,9 +13,11 @@ import javax.swing.border.EmptyBorder;
 
 import controller.InsufficientPaymentException;
 import controller.OrderController;
+import controller.TableController;
 import database.DataAccessException;
 import model.Order;
 import model.OrderLine;
+import model.Table;
 
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -45,20 +47,20 @@ public class CreateOrderMenu extends JDialog {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		try {
-			CreateOrderMenu dialog = new CreateOrderMenu();
-			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-			dialog.setVisible(true);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+//	public static void main(String[] args) {
+//		try {
+//			CreateOrderMenu dialog = new CreateOrderMenu();
+//			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+//			dialog.setVisible(true);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//	}
 
 	/**
 	 * Create the dialog.
 	 */
-	public CreateOrderMenu() {
+	public CreateOrderMenu(int tableID) {
 		setModal(true);
 		setBounds(100, 100, 960, 800);
 		getContentPane().setLayout(new BorderLayout());
@@ -181,7 +183,7 @@ public class CreateOrderMenu extends JDialog {
 				JScrollPane scrollPane = new JScrollPane();
 				panel.add(scrollPane, BorderLayout.CENTER);
 				{
-					listOfOrderLines = new JList();
+					listOfOrderLines = new JList<>();
 					scrollPane.setViewportView(listOfOrderLines);
 				}
 			}
@@ -229,7 +231,7 @@ public class CreateOrderMenu extends JDialog {
 				buttonPane.add(cancelButton);
 			}
 		}
-		init();
+		init(tableID);
 	}
 
 	protected void saveOrder() {
@@ -253,11 +255,14 @@ public class CreateOrderMenu extends JDialog {
 		productMenu.setVisible(true);
 	}
 
-	public void init() {
+	public void init(int tableID) {
 		orderController = new OrderController();
 		orderController.createOrder(null);
 		order = orderController.getCurrentOrder();
+		TableController tableController = new TableController();
+		tableController.setActiveTable(tableID);
 		initializeOrderLines();
+		System.out.println(tableID);
 	}
 	
 	private void initializeOrderLines() {
@@ -276,7 +281,7 @@ public class CreateOrderMenu extends JDialog {
 	}
 	
 	public void timer() {
-		Timer timer = new Timer();
+		timer = new Timer();
 		timer.schedule(new TimerTask() {
 			@Override
 			public void run() {

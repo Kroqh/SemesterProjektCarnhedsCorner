@@ -29,7 +29,17 @@ public class MainMenu extends JFrame {
 	
 	private static final long serialVersionUID = -6994623220232755587L;
 	private JPanel contentPane;
-	private JDialog orderMenuGUI;
+	private JDialog tableSelect;
+	
+	public static void main(String[] args) {
+		try {
+			MainMenu mainMenu = new MainMenu();
+			mainMenu.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+			mainMenu.setVisible(true);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
 	/**
 	 * Create the frame.
@@ -45,31 +55,23 @@ public class MainMenu extends JFrame {
 		JPanel centerPanel = new JPanel();
 		contentPane.add(centerPanel, BorderLayout.CENTER);
 		
-		JButton orderBtn = new JButton("Ordre");
-		orderBtn.setPreferredSize(new Dimension(150, 50));
-		orderBtn.setMinimumSize(new Dimension(100, 25));
-		orderBtn.setMaximumSize(new Dimension(100, 25));
-		orderBtn.addMouseListener(new MouseAdapter() {
+		JButton btnNewOrder = new JButton("Opret nyt salg");
+		btnNewOrder.setPreferredSize(new Dimension(150, 50));
+		btnNewOrder.setMinimumSize(new Dimension(100, 25));
+		btnNewOrder.setMaximumSize(new Dimension(100, 25));
+		btnNewOrder.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				createOrderMenu();
+				createTableSelectMenu();
 			}
 		});
 		
-		JButton productBtn = new JButton("Varer");
-		productBtn.setPreferredSize(new Dimension(150, 50));
+		JButton BtnCurrentOrders = new JButton("Igangværende salg");
+		BtnCurrentOrders.setPreferredSize(new Dimension(150, 50));
 		
-		JButton employeeBtn = new JButton("Medarbejdere");
-		employeeBtn.setPreferredSize(new Dimension(150, 50));
-		FlowLayout fl_centerPanel = new FlowLayout(FlowLayout.LEADING, 5, 5);
-		centerPanel.setLayout(fl_centerPanel);
-		centerPanel.add(orderBtn);
-		centerPanel.add(productBtn);
+		centerPanel.add(btnNewOrder);
+		centerPanel.add(BtnCurrentOrders);
 		
-		JButton customerBtn = new JButton("Kunder");
-		customerBtn.setPreferredSize(new Dimension(150, 50));
-		centerPanel.add(customerBtn);
-		centerPanel.add(employeeBtn);
 		
 		JPanel panel = new JPanel();
 		panel.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null, null, null));
@@ -93,8 +95,8 @@ public class MainMenu extends JFrame {
 		});
 	}
 	
-	public void createOrderMenu() {
-		orderMenuGUI = new CreateOrderMenu();
-		orderMenuGUI.setVisible(true);
+	public void createTableSelectMenu() {
+		tableSelect = new TableSelect();
+		tableSelect.setVisible(true);
 	}
 }

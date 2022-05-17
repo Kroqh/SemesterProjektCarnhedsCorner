@@ -28,7 +28,7 @@ public class OrderDB {
 			stmt.close();
 			
 		
-			ArrayList orderLines = order.getOrderLines();
+			ArrayList<OrderLine> orderLines = order.getOrderLines();
 			
 			
 			

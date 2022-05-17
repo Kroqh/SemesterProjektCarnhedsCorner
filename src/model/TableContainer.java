@@ -10,6 +10,7 @@ public class TableContainer {
     private TableContainer()
     {
         tables = new ArrayList<>();
+        createTables();
     }
 
     public static TableContainer getInstance(){
@@ -37,4 +38,21 @@ public class TableContainer {
         }
         return returnTable;
     }
+
+	public ArrayList<Table> getTables() {
+		return tables;
+	}
+
+
+	public void createTables()  {
+		for(int i = 1; i<= 8; i++) {
+			Table table = new Table(i);
+			tables.add(table);
+		}
+	}
+
+	public void setActiveTable(int tableID) {
+		Table table = findTableByID(tableID);
+		table.setIsActive(true);
+	}
 }
