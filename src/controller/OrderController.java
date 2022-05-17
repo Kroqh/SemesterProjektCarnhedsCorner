@@ -3,7 +3,6 @@ import java.util.ArrayList;
 
 import database.DataAccessException;
 import database.OrderDB;
-import model.Employee;
 import model.Order;
 import model.OrderLine;
 import model.Product;
@@ -20,12 +19,12 @@ public class OrderController {
 		orderDB = new OrderDB();
 	}
 	
+
 	public void createOrder(Employee employee) {
 		currentOrder = new Order(employee);
 	}
 	public void selectTable(int tableID) throws NullPointerException {
 		currentOrder.setTable(tableController.selectTable(tableID,currentOrder));
-	}
 	
 	public void addProductToOrder(int productID, int quantity) throws Exception {
 		Product product = productController.findProductByID(productID);
