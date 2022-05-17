@@ -109,7 +109,7 @@ public class ProductMenu extends JDialog {
 						@Override
 						public void mouseClicked(MouseEvent e) {
 							try {
-								addProductToOrder(1, 1, order);
+								addProductToOrder(2, 1, order);
 							} catch (Exception e1) {
 								// TODO Auto-generated catch block
 								e1.printStackTrace();
@@ -145,7 +145,7 @@ public class ProductMenu extends JDialog {
 						@Override
 						public void mouseClicked(MouseEvent e) {
 							try {
-								addProductToOrder(1, 1, order);
+								addProductToOrder(3, 1, order);
 							} catch (Exception e1) {
 								// TODO Auto-generated catch block
 								e1.printStackTrace();
@@ -182,7 +182,7 @@ public class ProductMenu extends JDialog {
 						@Override
 						public void mouseClicked(MouseEvent e) {
 							try {
-								addProductToOrder(1, 1, order);
+								addProductToOrder(4, 1, order);
 							} catch (Exception e1) {
 								// TODO Auto-generated catch block
 								e1.printStackTrace();
@@ -218,7 +218,7 @@ public class ProductMenu extends JDialog {
 						@Override
 						public void mouseClicked(MouseEvent e) {
 							try {
-								addProductToOrder(1, 1, order);
+								addProductToOrder(5, 1, order);
 							} catch (Exception e1) {
 								// TODO Auto-generated catch block
 								e1.printStackTrace();
@@ -254,7 +254,7 @@ public class ProductMenu extends JDialog {
 						@Override
 						public void mouseClicked(MouseEvent e) {
 							try {
-								addProductToOrder(1, 1, order);
+								addProductToOrder(6, 1, order);
 							} catch (Exception e1) {
 								// TODO Auto-generated catch block
 								e1.printStackTrace();
@@ -290,7 +290,7 @@ public class ProductMenu extends JDialog {
 						@Override
 						public void mouseClicked(MouseEvent e) {
 							try {
-								addProductToOrder(1, 1, order);
+								addProductToOrder(7, 1, order);
 							} catch (Exception e1) {
 								// TODO Auto-generated catch block
 								e1.printStackTrace();
@@ -326,7 +326,7 @@ public class ProductMenu extends JDialog {
 						@Override
 						public void mouseClicked(MouseEvent e) {
 							try {
-								addProductToOrder(1, 1, order);
+								addProductToOrder(8, 1, order);
 							} catch (Exception e1) {
 								// TODO Auto-generated catch block
 								e1.printStackTrace();
@@ -362,7 +362,7 @@ public class ProductMenu extends JDialog {
 						@Override
 						public void mouseClicked(MouseEvent e) {
 							try {
-								addProductToOrder(1, 1, order);
+								addProductToOrder(9, 1, order);
 							} catch (Exception e1) {
 								// TODO Auto-generated catch block
 								e1.printStackTrace();
@@ -398,7 +398,7 @@ public class ProductMenu extends JDialog {
 						@Override
 						public void mouseClicked(MouseEvent e) {
 							try {
-								addProductToOrder(1, 1, order);
+								addProductToOrder(10, 1, order);
 							} catch (Exception e1) {
 								// TODO Auto-generated catch block
 								e1.printStackTrace();
@@ -434,7 +434,7 @@ public class ProductMenu extends JDialog {
 						@Override
 						public void mouseClicked(MouseEvent e) {
 							try {
-								addProductToOrder(1, 1, order);
+								addProductToOrder(11, 1, order);
 							} catch (Exception e1) {
 								// TODO Auto-generated catch block
 								e1.printStackTrace();
@@ -470,7 +470,7 @@ public class ProductMenu extends JDialog {
 						@Override
 						public void mouseClicked(MouseEvent e) {
 							try {
-								addProductToOrder(1, 1, order);
+								addProductToOrder(12, 1, order);
 							} catch (Exception e1) {
 								// TODO Auto-generated catch block
 								e1.printStackTrace();
@@ -506,7 +506,7 @@ public class ProductMenu extends JDialog {
 						@Override
 						public void mouseClicked(MouseEvent e) {
 							try {
-								addProductToOrder(1, 1, order);
+								addProductToOrder(13, 1, order);
 							} catch (Exception e1) {
 								// TODO Auto-generated catch block
 								e1.printStackTrace();
@@ -542,7 +542,7 @@ public class ProductMenu extends JDialog {
 						@Override
 						public void mouseClicked(MouseEvent e) {
 							try {
-								addProductToOrder(1, 1, order);
+								addProductToOrder(14, 1, order);
 							} catch (Exception e1) {
 								// TODO Auto-generated catch block
 								e1.printStackTrace();
@@ -578,7 +578,7 @@ public class ProductMenu extends JDialog {
 						@Override
 						public void mouseClicked(MouseEvent e) {
 							try {
-								addProductToOrder(1, 1, order);
+								addProductToOrder(15, 1, order);
 							} catch (Exception e1) {
 								// TODO Auto-generated catch block
 								e1.printStackTrace();
@@ -614,7 +614,7 @@ public class ProductMenu extends JDialog {
 						@Override
 						public void mouseClicked(MouseEvent e) {
 							try {
-								addProductToOrder(1, 1, order);
+								addProductToOrder(16, 1, order);
 							} catch (Exception e1) {
 								// TODO Auto-generated catch block
 								e1.printStackTrace();
