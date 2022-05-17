@@ -11,18 +11,16 @@ import model.OrderLine;
 
 public class OrderDB {
 	
-	private OrderLineDB orderLineDB;
+	private OrderLineDB orderLineDB = new OrderLineDB();
 	
 	public void saveOrder(Order order) throws DataAccessException {
 		int insertedKey = 0;
 		Connection con = DBConnection.getInstance().getConnection();
 		
-		String baseInsert = "insert into CHC_Orders (date, totalPrice, paymentStatus) values";
-		baseInsert = "( ?, ?, ?)";
+		String baseInsert = "insert into CHC_Orders (date, totalPrice, paymentStatus) values(?,?,?)";
 		
 		try {
 			PreparedStatement stmt = con.prepareStatement(baseInsert, Statement.RETURN_GENERATED_KEYS);
-			// can we do a setDateTime ???
 			stmt.setString(1, order.getDate().toString());
 			stmt.setFloat(2, order.getTotalPrice());
 			stmt.setBoolean(3, order.isPaymentStatus());
@@ -38,7 +36,7 @@ public class OrderDB {
 				OrderLine orderLine = (OrderLine) orderLines.get(i);
 				orderLineDB.saveOrderLine(orderLine, insertedKey);
 			}
-			
+			con.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
