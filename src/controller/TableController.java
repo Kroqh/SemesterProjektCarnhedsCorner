@@ -6,7 +6,7 @@ import model.TableContainer;
 
 public class TableController {
 
-	public Table SelectTable(int tableID, Order order) throws NullPointerException {
+	public Table selectTable(int tableID, Order order) throws NullPointerException {
 		Table table = TableContainer.getInstance().findTableByID(tableID);
 		
 		if (table == null) {

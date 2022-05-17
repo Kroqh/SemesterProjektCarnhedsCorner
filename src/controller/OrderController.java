@@ -21,7 +21,7 @@ public class OrderController {
 		currentOrder = new Order(employee);
 	}
 	public void selectTable(int tableID) throws NullPointerException {
-			currentOrder.setTable(tableController.SelectTable(tableID,currentOrder));
+			currentOrder.setTable(tableController.selectTable(tableID,currentOrder));
 	}
 	
 	public void addProductToOrder(int productID, int quantity) throws Exception {
