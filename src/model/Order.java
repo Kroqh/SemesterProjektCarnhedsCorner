@@ -13,12 +13,13 @@ public class Order {
 	private Employee employee;
 	
 	public Order(Employee employee) {
-	this.employee = employee;
-	date = LocalDateTime.now();
-	date = date.truncatedTo(ChronoUnit.MINUTES);
+		this.employee = employee;
+		date = LocalDateTime.now();
+		date = date.truncatedTo(ChronoUnit.MINUTES);
 	
-	orderLines = new ArrayList<OrderLine>();
+		orderLines = new ArrayList<OrderLine>();
 	}
+	
 	public void addOrderLine(Product product, int quantity) {
 		boolean found = false;
 		int i = 0;

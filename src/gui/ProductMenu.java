@@ -19,6 +19,7 @@ import model.OrderLine;
 import model.Product;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ImageIcon;
@@ -182,7 +183,7 @@ public class ProductMenu extends JDialog {
 	
 	protected void addProductToOrder(int buttonNR, int quantity, Order order) throws Exception {
 		OrderController orderController = new OrderController();
-		JLabel labelID = labelsID.get(buttonNR);
+		JLabel labelID = labelsID.get(buttonNR-1);
 		String productIDString = labelID.getText();
 		int productID = 0;
 		try {
@@ -198,9 +199,15 @@ public class ProductMenu extends JDialog {
 		intializeProducts();
 	}
 
-	private void intializeProducts() throws SQLException, DataAccessException {
+	private void intializeProducts() {
 		ProductController productController = new ProductController();
-		ArrayList<Product> products = productController.findAllProductsByType(type);
+		ArrayList<Product> products = new ArrayList<>();
+		try {
+			products = productController.findAllProductsByType(type);
+		} catch (SQLException | DataAccessException e) {
+			JOptionPane.showMessageDialog(this, "Der er opstået en uventet fejl i forbindelsen med servren, prøv igen");
+			e.printStackTrace();
+		}
 		for (int i=0; i<products.size(); i++) {
 			Product product = products.get(i);
 			JLabel labelPrice = labelsPrice.get(i);

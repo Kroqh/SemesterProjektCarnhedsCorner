@@ -17,11 +17,11 @@ public class ProductDB {
 	public Product getProductByID(int id) throws DataAccessException, SQLException {
 		Connection con = DBConnection.getInstance().getConnection();
 		Product product = null;
-		String baseSelect = "select name, type, price from CHC_Products ";
+		String baseSelect = "select * from CHC_Products ";
 		baseSelect += "left outer join CHC_Dishes on CHC_Products.id = CHC_Dishes.fk_ProductID ";
 		baseSelect += "left outer join CHC_Ingredients on CHC_Products.id = CHC_Ingredients.fk_ProductID ";
 		baseSelect += "left outer join CHC_Drinks on CHC_Products.id = CHC_Drinks.fk_ProductID ";
-		baseSelect += "Where id = ?;";
+		baseSelect += "Where id = ?";
 		
 		ResultSet rs = null;
 		String name = null;
@@ -43,7 +43,8 @@ public class ProductDB {
 				break;
 			case "dish":
 				boolean vegetarian = rs.getBoolean("vegetarian");
-				product = new Dish(price, name, type, vegetarian, id);
+				String dishType = rs.getString("dishType");
+				product = new Dish(price, name, type, vegetarian, dishType, id);
 				break;
 			case "ingrediens":
 				product = new Ingredient(price, name, type, id);
@@ -78,7 +79,7 @@ public class ProductDB {
 		
 		try {
 			PreparedStatement stmt = con.prepareStatement(baseSelect);
-			stmt.setString(0+1, type);
+			stmt.setString(1, type);
 			rs = stmt.executeQuery();
 			while(rs.next()) {
 				//rs.next();
@@ -91,10 +92,9 @@ public class ProductDB {
 					product = new Menu(price, name, type, id);
 					break;
 				case "dish":
-					//int vegetarian = rs.getInt("vegetarian");
-					//boolean vegetarian = byteToBoolean(vegetarianInt);
 					boolean vegetarian = rs.getBoolean("vegetarian");
-					product = new Dish(price, name, type, vegetarian, id);
+					String dishType = rs.getString("dishType");
+					product = new Dish(price, name, type, vegetarian, dishType, id);
 					break;
 				case "ingrediens":
 					product = new Ingredient(price, name, type, id);
@@ -121,4 +121,5 @@ public class ProductDB {
 		}
 		return bool;
 	}
+	
 }

@@ -4,15 +4,18 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 
+import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import controller.InsufficientPaymentException;
 import controller.OrderController;
 import database.DataAccessException;
 import model.Order;
+import model.OrderLine;
 
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -22,11 +25,22 @@ import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
+
+import javax.swing.JScrollPane;
+import javax.swing.JList;
+import javax.swing.JOptionPane;
 
 public class CreateOrderMenu extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
 	private Order order = null;
+	private JList<OrderLine> listOfOrderLines;
+	private OrderController orderController;
+	private Timer timer;
+	private JLabel lblTotalPrice;
 
 	/**
 	 * Launch the application.
@@ -78,6 +92,7 @@ public class CreateOrderMenu extends JDialog {
 							// TODO Auto-generated catch block
 							e1.printStackTrace();
 						}
+						updateOrderLineList();
 					}
 				});
 				btnAppetizers.setPreferredSize( new Dimension( 150, 150 ));
@@ -162,6 +177,41 @@ public class CreateOrderMenu extends JDialog {
 					panel_1.add(lblNewLabel_1);
 				}
 			}
+			{
+				JScrollPane scrollPane = new JScrollPane();
+				panel.add(scrollPane, BorderLayout.CENTER);
+				{
+					listOfOrderLines = new JList();
+					scrollPane.setViewportView(listOfOrderLines);
+				}
+			}
+			{
+				JPanel panel_1 = new JPanel();
+				panel.add(panel_1, BorderLayout.SOUTH);
+				panel_1.setLayout(new BorderLayout(0, 0));
+				{
+					JPanel panel_2 = new JPanel();
+					panel_1.add(panel_2, BorderLayout.NORTH);
+					{
+						lblTotalPrice = new JLabel("I alt : ");
+						panel_2.add(lblTotalPrice);
+					}
+				}
+				{
+					JPanel panel_2 = new JPanel();
+					panel_1.add(panel_2, BorderLayout.SOUTH);
+					{
+						JButton btnPay = new JButton("Betaling");
+						btnPay.addMouseListener(new MouseAdapter() {
+							@Override
+							public void mouseClicked(MouseEvent e) {
+									saveOrder();
+							}
+						});
+						panel_2.add(btnPay);
+					}
+				}
+			}
 		}
 		{
 			JPanel buttonPane = new JPanel();
@@ -179,6 +229,23 @@ public class CreateOrderMenu extends JDialog {
 				buttonPane.add(cancelButton);
 			}
 		}
+		init();
+	}
+
+	protected void saveOrder() {
+		PayAmount payAmount = new PayAmount();
+		payAmount.setVisible(true);
+		float amount = payAmount.getAmount();
+		payAmount.dispose();
+		try {
+			orderController.saveOrder(amount);
+		} catch (DataAccessException e) {
+			JOptionPane.showMessageDialog(this, "Der er opstået en uventet fejl i forbindelsen med serveren, prøv igen");
+			e.printStackTrace();
+		} catch (InsufficientPaymentException e) {
+			JOptionPane.showMessageDialog(this, "Der er mangler at blive betalt yderligere " + (orderController.getTotalPrice() - amount) + " kr.");
+			e.printStackTrace();
+		}
 	}
 
 	protected void productMenu(String type) throws SQLException, DataAccessException {
@@ -187,9 +254,44 @@ public class CreateOrderMenu extends JDialog {
 	}
 
 	public void init() {
-		OrderController orderController = new OrderController();
+		orderController = new OrderController();
 		orderController.createOrder(null);
 		order = orderController.getCurrentOrder();
+		initializeOrderLines();
 	}
+	
+	private void initializeOrderLines() {
+		OrderListRenderer olr = new OrderListRenderer();
+		listOfOrderLines.setCellRenderer(olr);
+		timer();
+	}
+	
+	private void updateOrderLineList() {
+		DefaultListModel<OrderLine> dlm = new DefaultListModel<OrderLine>();
+		ArrayList<OrderLine> dataList = orderController.getOrderLines();
+		for(OrderLine element : dataList) {
+			dlm.addElement(element);
+		}
+		listOfOrderLines.setModel(dlm);
+	}
+	
+	public void timer() {
+		Timer timer = new Timer();
+		timer.schedule(new TimerTask() {
+			@Override
+			public void run() {
+				updateOrderLineList();
+				updateTotalPrice();
+			}
+		}, 0, 1000);
+	}
+	
+	public void updateTotalPrice() {
+		float totalPrice = 0;
+		totalPrice = orderController.getTotalPrice();
+		lblTotalPrice.setText("I alt : " +totalPrice+ " kr");
+	}
+	
+	
 	
 }

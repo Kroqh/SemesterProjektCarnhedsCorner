@@ -22,4 +22,12 @@ public class OrderLine {
 	public int getProductID() {
 		return product.getID();
 	}
+	
+	public String getProductName() {
+		return product.getName();
+	}
+	
+	public float getPrice() {
+		return (product.getPrice() * quantity);
+	}
 }

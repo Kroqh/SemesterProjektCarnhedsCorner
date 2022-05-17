@@ -1,8 +1,11 @@
 package controller;
+import java.util.ArrayList;
+
 import database.DataAccessException;
 import database.OrderDB;
 import model.Employee;
 import model.Order;
+import model.OrderLine;
 import model.Product;
 
 public class OrderController {
@@ -47,5 +50,13 @@ public class OrderController {
 	
 	public void setCurrentOrder(Order order) {
 		currentOrder = order;
+	}
+	
+	public ArrayList<OrderLine> getOrderLines() {
+		return currentOrder.getOrderLines();
+	}
+	
+	public float getTotalPrice() {
+		return currentOrder.getTotalPrice();
 	}
 }	
