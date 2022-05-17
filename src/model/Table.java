@@ -3,7 +3,6 @@ package model;
 public class Table {
 
 	private int tableID;
-	private boolean active;
 	private Order currentOrder;
 	
 	public void setCurrentOrder(Order order) {
@@ -19,12 +18,7 @@ public class Table {
 	public int getTableID() {
 		return tableID;
 	}
-	public void setActive(Order order) {
-		active = true;
-		currentOrder = order;
-	}
 	public void setInactive() {
-		active = false;
 		currentOrder = null;
 	}
 }
