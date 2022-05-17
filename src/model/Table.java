@@ -18,7 +18,4 @@ public class Table {
 	public int getTableID() {
 		return tableID;
 	}
-	public void setInactive() {
-		currentOrder = null;
-	}
 }
