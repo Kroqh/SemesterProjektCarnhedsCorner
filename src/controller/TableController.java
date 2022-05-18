@@ -29,9 +29,5 @@ public class TableController {
 	public ArrayList<Table> getTables() {
 		return tableContainer.getTables();
 	}
-
-	public void setActiveTable(int tableID) {
-		tableContainer.setActiveTable(tableID);
-	}
 	
 }

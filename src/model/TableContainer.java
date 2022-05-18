@@ -50,9 +50,4 @@ public class TableContainer {
 			tables.add(table);
 		}
 	}
-
-	public void setActiveTable(int tableID) {
-		Table table = findTableByID(tableID);
-		table.setIsActive(true);
-	}
 }
