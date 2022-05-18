@@ -34,6 +34,7 @@ public class ProductMenu extends JDialog {
 	private ArrayList<JLabel> labelsName = null;
 	private ArrayList<JLabel> labelsPrice = null;
 	private ArrayList<JLabel> labelsID = null;
+	private ArrayList<JPanel> panels = null;
 
 
 	/**
@@ -45,6 +46,7 @@ public class ProductMenu extends JDialog {
 		labelsName = new ArrayList<>();
 		labelsPrice = new ArrayList<>();
 		labelsID = new ArrayList<>();
+		panels = new ArrayList<>();
 		this.type = type;
 		setModal(true);
 		setBounds(100, 100, 600, 600);
@@ -66,7 +68,9 @@ public class ProductMenu extends JDialog {
 			panel.setLayout(new GridLayout(4, 4, 0, 0));
 			{
 				JPanel panel_1 = new JPanel();
+				panel_1.setVisible(false);
 				panel.add(panel_1);
+				panels.add(panel_1);
 				{
 					JButton btnProduct1 = new JButton("New button");
 					btnProduct1.addMouseListener(new MouseAdapter() {
@@ -102,7 +106,9 @@ public class ProductMenu extends JDialog {
 			}
 			{
 				JPanel panel_2 = new JPanel();
+				panel_2.setVisible(false);
 				panel.add(panel_2);
+				panels.add(panel_2);
 				{
 					JButton btnProduct2 = new JButton("New button");
 					btnProduct2.addMouseListener(new MouseAdapter() {
@@ -138,7 +144,9 @@ public class ProductMenu extends JDialog {
 			}
 				{
 					JPanel panel_3 = new JPanel();
+					panel_3.setVisible(false);
 					panel.add(panel_3);
+					panels.add(panel_3);
 				{
 					JButton btnProduct3 = new JButton("New button");
 					btnProduct3.addMouseListener(new MouseAdapter() {
@@ -175,7 +183,9 @@ public class ProductMenu extends JDialog {
 			
 			{
 				JPanel panel_4 = new JPanel();
+				panel_4.setVisible(false);
 				panel.add(panel_4);
+				panels.add(panel_4);
 				{
 					JButton btnProduct4 = new JButton("New button");
 					btnProduct4.addMouseListener(new MouseAdapter() {
@@ -211,7 +221,9 @@ public class ProductMenu extends JDialog {
 			}
 			{
 				JPanel panel_5 = new JPanel();
+				panel_5.setVisible(false);
 				panel.add(panel_5);
+				panels.add(panel_5);
 				{
 					JButton btnProduct5 = new JButton("New button");
 					btnProduct5.addMouseListener(new MouseAdapter() {
@@ -247,7 +259,9 @@ public class ProductMenu extends JDialog {
 			}
 			{
 				JPanel panel_6 = new JPanel();
+				panel_6.setVisible(false);
 				panel.add(panel_6);
+				panels.add(panel_6);
 				{
 					JButton btnProduct6 = new JButton("New button");
 					btnProduct6.addMouseListener(new MouseAdapter() {
@@ -283,7 +297,9 @@ public class ProductMenu extends JDialog {
 			}
 			{
 				JPanel panel_7 = new JPanel();
+				panel_7.setVisible(false);
 				panel.add(panel_7);
+				panels.add(panel_7);
 				{
 					JButton btnProduct7 = new JButton("New button");
 					btnProduct7.addMouseListener(new MouseAdapter() {
@@ -319,7 +335,9 @@ public class ProductMenu extends JDialog {
 			}
 			{
 				JPanel panel_8 = new JPanel();
+				panel_8.setVisible(false);
 				panel.add(panel_8);
+				panels.add(panel_8);
 				{
 					JButton btnProduct8 = new JButton("New button");
 					btnProduct8.addMouseListener(new MouseAdapter() {
@@ -355,7 +373,9 @@ public class ProductMenu extends JDialog {
 			}
 			{
 				JPanel panel_9 = new JPanel();
+				panel_9.setVisible(false);
 				panel.add(panel_9);
+				panels.add(panel_9);
 				{
 					JButton btnProduct9 = new JButton("New button");
 					btnProduct9.addMouseListener(new MouseAdapter() {
@@ -391,7 +411,9 @@ public class ProductMenu extends JDialog {
 			}
 			{
 				JPanel panel_10 = new JPanel();
+				panel_10.setVisible(false);
 				panel.add(panel_10);
+				panels.add(panel_10);
 				{
 					JButton btnProduct10 = new JButton("New button");
 					btnProduct10.addMouseListener(new MouseAdapter() {
@@ -427,7 +449,9 @@ public class ProductMenu extends JDialog {
 			}
 			{
 				JPanel panel_11 = new JPanel();
+				panel_11.setVisible(false);
 				panel.add(panel_11);
+				panels.add(panel_11);
 				{
 					JButton btnProduct11 = new JButton("New button");
 					btnProduct11.addMouseListener(new MouseAdapter() {
@@ -463,7 +487,9 @@ public class ProductMenu extends JDialog {
 			}
 			{
 				JPanel panel_12 = new JPanel();
+				panel_12.setVisible(false);
 				panel.add(panel_12);
+				panels.add(panel_12);
 				{
 					JButton btnProduct12 = new JButton("New button");
 					btnProduct12.addMouseListener(new MouseAdapter() {
@@ -499,7 +525,9 @@ public class ProductMenu extends JDialog {
 			}
 			{
 				JPanel panel_13 = new JPanel();
+				panel_13.setVisible(false);
 				panel.add(panel_13);
+				panels.add(panel_13);
 				{
 					JButton btnProduct13 = new JButton("New button");
 					btnProduct13.addMouseListener(new MouseAdapter() {
@@ -535,7 +563,9 @@ public class ProductMenu extends JDialog {
 			}
 			{
 				JPanel panel_14 = new JPanel();
+				panel_14.setVisible(false);
 				panel.add(panel_14);
+				panels.add(panel_14);
 				{
 					JButton btnProduct14 = new JButton("New button");
 					btnProduct14.addMouseListener(new MouseAdapter() {
@@ -571,7 +601,9 @@ public class ProductMenu extends JDialog {
 			}
 			{
 				JPanel panel_15 = new JPanel();
+				panel_15.setVisible(false);
 				panel.add(panel_15);
+				panels.add(panel_15);
 				{
 					JButton btnProduct15 = new JButton("New button");
 					btnProduct15.addMouseListener(new MouseAdapter() {
@@ -607,7 +639,9 @@ public class ProductMenu extends JDialog {
 			}
 			{
 				JPanel panel_16 = new JPanel();
+				panel_16.setVisible(false);
 				panel.add(panel_16);
+				panels.add(panel_16);
 				{
 					JButton btnProduct16 = new JButton("New button");
 					btnProduct16.addMouseListener(new MouseAdapter() {
@@ -689,10 +723,12 @@ public class ProductMenu extends JDialog {
 			e.printStackTrace();
 		}
 		for (int i=0; i<products.size(); i++) {
+			JPanel panel = panels.get(i);
 			Product product = products.get(i);
 			JLabel labelPrice = labelsPrice.get(i);
 			JLabel labelName = labelsName.get(i);
 			JLabel labelID = labelsID.get(i);
+			panel.setVisible(true);
 			labelName.setText(product.getName());
 			labelPrice.setText(product.getPrice() + "kr.");
 			labelID.setText(product.getID() + "");

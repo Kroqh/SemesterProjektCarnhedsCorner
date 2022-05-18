@@ -110,7 +110,7 @@ public class TableSelect extends JDialog {
 		table = null;
 		for(int i = 0; i < tables.size(); i++) {
 			table = tables.get(i);
-			if(table.isActive() == false) {
+			if(table.getCurrentOrder() == null) {
 			comboBox.addItem(table.getTableID());
 			}
 		}
