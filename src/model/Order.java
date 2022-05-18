@@ -37,7 +37,9 @@ public class Order {
 		}
 		
 	}
-	
+	public int getTableID() {
+		return tableID;
+	}
 
 
 	public float getTotalPrice() {

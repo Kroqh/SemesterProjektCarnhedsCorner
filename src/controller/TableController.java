@@ -22,6 +22,9 @@ public class TableController {
 		
 		return table;
 	}
+	public void releaseTable(int tableID) {
+		tableContainer.getTables().get(tableID).releaseTable();
+	}
 	
 	public ArrayList<Table> getTables() {
 		return tableContainer.getTables();

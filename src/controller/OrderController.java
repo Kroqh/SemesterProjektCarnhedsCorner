@@ -35,6 +35,7 @@ public class OrderController {
 	public void saveOrder(float payAmount) throws DataAccessException, InsufficientPaymentException {
 		if (payAmount >= currentOrder.getTotalPrice()) {
 			currentOrder.setPaymentStatus(true);
+			tableController.releaseTable(currentOrder.getTableID());
 			orderDB.saveOrder(currentOrder);
 		}
 		else {
