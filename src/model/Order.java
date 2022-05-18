@@ -9,12 +9,12 @@ public class Order {
 	private LocalDateTime date;
 	private boolean paymentStatus;
 	private ArrayList<OrderLine> orderLines;
-	private Table table;
+	private int tableID;
 	
-	public Order(Table table) {
+	public Order(int tableID) {
 		date = LocalDateTime.now();
 		date = date.truncatedTo(ChronoUnit.MINUTES);
-		this.table = table;
+		this.tableID = tableID;
 	
 		orderLines = new ArrayList<OrderLine>();
 	}
@@ -37,10 +37,10 @@ public class Order {
 		}
 		
 	}
-	
-	public void setTable(Table table) {
-		this.table = table;
+	public int getTableID() {
+		return tableID;
 	}
+
 
 	public float getTotalPrice() {
 		

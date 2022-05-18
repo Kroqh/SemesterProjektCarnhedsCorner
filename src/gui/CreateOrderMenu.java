@@ -60,7 +60,7 @@ public class CreateOrderMenu extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public CreateOrderMenu(Table table) {
+	public CreateOrderMenu(int tableID) {
 		setModal(true);
 		setBounds(100, 100, 960, 800);
 		getContentPane().setLayout(new BorderLayout());
@@ -231,7 +231,7 @@ public class CreateOrderMenu extends JDialog {
 				buttonPane.add(cancelButton);
 			}
 		}
-		init(table);
+		init(tableID);
 	}
 
 	protected void saveOrder() {
@@ -255,12 +255,11 @@ public class CreateOrderMenu extends JDialog {
 		productMenu.setVisible(true);
 	}
 
-	public void init(Table table) {
+	public void init(int tableID) {
 		orderController = new OrderController();
-		orderController.createOrder(table);
+		orderController.createOrder(tableID);
 		order = orderController.getCurrentOrder();
 		TableController tableController = new TableController();
-		tableController.setActiveTable(table.getTableID());
 		initializeOrderLines();
 	}
 	
