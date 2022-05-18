@@ -21,12 +21,8 @@ public class OrderController {
 	}
 	
 
-	public void createOrder(Table table) {
-		currentOrder = new Order(table);
-	}
-	
-	public void selectTable(int tableID) throws NullPointerException {
-		currentOrder.setTable(tableController.selectTable(tableID,currentOrder));
+	public void createOrder(int tableID) {
+		currentOrder = new Order(tableID);
 	}
 	
 	public void addProductToOrder(int productID, int quantity) throws Exception {
