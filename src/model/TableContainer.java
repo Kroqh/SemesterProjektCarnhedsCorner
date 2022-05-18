@@ -50,4 +50,9 @@ public class TableContainer {
 			tables.add(table);
 		}
 	}
+
+	public void setOrderToTable(int tableID, Order order) {
+		Table table = findTableByID(tableID);
+		table.setCurrentOrder(order);
+	}
 }

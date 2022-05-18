@@ -82,22 +82,10 @@ public class TableSelect extends JDialog {
 	}
 
 	private void CreateOrder() {
-//		Thread t1 = new Thread() {
-//			public void run() {
 				int tableID = (int) comboBox.getSelectedItem();
-				tableController.setActiveTable(tableID);
-				table = tables.get(tableID);
-				CreateOrderMenu createOrderMenu = new CreateOrderMenu(table);
+				CreateOrderMenu createOrderMenu = new CreateOrderMenu(tableID);
 				this.dispose();
-				createOrderMenu.setVisible(true);
-//			}
-//		};
-//		Thread t2 = new Thread() {
-//			public void run() {
-				//this.dispose();
-//			}
-//		};
-		
+				createOrderMenu.setVisible(true);	
 	}
 
 	private void init() {

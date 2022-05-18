@@ -260,6 +260,7 @@ public class CreateOrderMenu extends JDialog {
 		orderController.createOrder(tableID);
 		order = orderController.getCurrentOrder();
 		TableController tableController = new TableController();
+		tableController.setOrderToTable(tableID, order);
 		initializeOrderLines();
 	}
 	

@@ -13,7 +13,7 @@ public class TableController {
 		this.tableContainer = TableContainer.getInstance();
 	}
 
-	public Table selectTable(int tableID, Order order) throws NullPointerException {
+	public Table selectTable(int tableID) throws NullPointerException {
 		Table table = TableContainer.getInstance().findTableByID(tableID);
 		
 		if (table == null) {
@@ -28,6 +28,10 @@ public class TableController {
 	
 	public ArrayList<Table> getTables() {
 		return tableContainer.getTables();
+	}
+
+	public void setOrderToTable(int tableID, Order order) {
+		tableContainer.setOrderToTable(tableID, order);
 	}
 	
 }
