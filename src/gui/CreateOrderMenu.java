@@ -84,7 +84,7 @@ public class CreateOrderMenu extends JDialog {
 				btnAppetizers.addMouseListener(new MouseAdapter() {
 					@Override
 					public void mouseClicked(MouseEvent e) {
-						String type = "dish";
+						String type = "appetizer";
 						try {
 							productMenu(type);
 						} catch (SQLException e1) {
@@ -102,16 +102,64 @@ public class CreateOrderMenu extends JDialog {
 			}
 			{
 				JButton btnStarter = new JButton("Forretter");
+				btnStarter.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						String type = "forret";
+						try {
+							productMenu(type);
+						} catch (SQLException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						} catch (DataAccessException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+						updateOrderLineList();
+					}
+				});
 				btnStarter.setPreferredSize( new Dimension( 150, 150 ));
 				panel.add(btnStarter);
 			}
 			{
 				JButton btnMain = new JButton("Hovedretter");
+				btnMain.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						String type = "hovedret";
+						try {
+							productMenu(type);
+						} catch (SQLException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						} catch (DataAccessException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+						updateOrderLineList();
+					}
+				});
 				btnMain.setPreferredSize( new Dimension( 150, 150 ));
 				panel.add(btnMain);
 			}
 			{
 				JButton btnDessertCheese = new JButton("Dessert/ost");
+				btnDessertCheese.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						String type = "dessert/ost";
+						try {
+							productMenu(type);
+						} catch (SQLException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						} catch (DataAccessException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+						updateOrderLineList();
+					}
+				});
 				btnDessertCheese.setPreferredSize( new Dimension( 150, 150 ));
 				panel.add(btnDessertCheese);
 			}
@@ -120,43 +168,183 @@ public class CreateOrderMenu extends JDialog {
 				panel.add(btnMenu);
 			}
 			{
-				JButton btnKidsMenu = new JButton("Børnemenu");
-				panel.add(btnKidsMenu);
-			}
-			{
-				JButton btnSparklingWine = new JButton("Mousserende vin");
+				JButton btnSparklingWine = new JButton("mousserende vin");
+				btnSparklingWine.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						String type = "mousserende vin";
+						try {
+							productMenu(type);
+						} catch (SQLException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						} catch (DataAccessException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+						updateOrderLineList();
+					}
+				});
 				panel.add(btnSparklingWine);
 			}
 			{
 				JButton btnRoseWine = new JButton("Rosévin");
+				btnRoseWine.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						String type = "rosévin";
+						try {
+							productMenu(type);
+						} catch (SQLException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						} catch (DataAccessException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+						updateOrderLineList();
+					}
+				});
 				panel.add(btnRoseWine);
 			}
 			{
 				JButton btnRedWine = new JButton("Rødvin");
+				btnRedWine.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						String type = "rødvin";
+						try {
+							productMenu(type);
+						} catch (SQLException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						} catch (DataAccessException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+						updateOrderLineList();
+					}
+				});
 				panel.add(btnRedWine);
 			}
 			{
 				JButton btnWhiteWine = new JButton("Hvidvin");
+				btnWhiteWine.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						String type = "hvidvin";
+						try {
+							productMenu(type);
+						} catch (SQLException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						} catch (DataAccessException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+						updateOrderLineList();
+					}
+				});
 				panel.add(btnWhiteWine);
 			}
 			{
 				JButton btnBeer = new JButton("Øl");
+				btnBeer.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						String type = "øl";
+						try {
+							productMenu(type);
+						} catch (SQLException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						} catch (DataAccessException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+						updateOrderLineList();
+					}
+				});
 				panel.add(btnBeer);
 			}
 			{
 				JButton btnSodas = new JButton("Sodavand");
+				btnSodas.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						String type = "sodavand";
+						try {
+							productMenu(type);
+						} catch (SQLException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						} catch (DataAccessException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+						updateOrderLineList();
+					}
+				});
 				panel.add(btnSodas);
 			}
 			{
 				JButton btnThyEcoLemonade = new JButton("Thy øko saft");
+				btnThyEcoLemonade.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						String type = "thy øko saft";
+						try {
+							productMenu(type);
+						} catch (SQLException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						} catch (DataAccessException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+						updateOrderLineList();
+					}
+				});
 				panel.add(btnThyEcoLemonade);
 			}
 			{
 				JButton btnHotDrinks = new JButton("Varme Drikke");
+				btnHotDrinks.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						String type = "varme drikke";
+						try {
+							productMenu(type);
+						} catch (SQLException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						} catch (DataAccessException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+						updateOrderLineList();
+					}
+				});
 				panel.add(btnHotDrinks);
 			}
 			{
 				JButton btnDessertWineAvec = new JButton("Dessertvin og Avec");
+				btnDessertWineAvec.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						String type = "dessertvin og avec";
+						try {
+							productMenu(type);
+						} catch (SQLException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						} catch (DataAccessException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+						updateOrderLineList();
+					}
+				});
 				panel.add(btnDessertWineAvec);
 			}
 			{
