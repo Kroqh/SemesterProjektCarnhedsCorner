@@ -7,6 +7,7 @@ import model.Order;
 import model.OrderLine;
 import model.Product;
 import model.Table;
+import model.Menu;
 
 public class OrderController {
 	private Order currentOrder;
@@ -32,9 +33,14 @@ public class OrderController {
 		}
 		currentOrder.addOrderLine(product, quantity);
 	}
+	
+	public void addMenuToOrder(Product menu) {
+		currentOrder.addOrderLine(menu, 1);
+	}
 	public void saveOrder(float payAmount) throws DataAccessException, InsufficientPaymentException {
 		if (payAmount >= currentOrder.getTotalPrice()) {
 			currentOrder.setPaymentStatus(true);
+			int tableID = currentOrder.getTableID();
 			tableController.releaseTable(currentOrder.getTableID());
 			orderDB.saveOrder(currentOrder);
 		}

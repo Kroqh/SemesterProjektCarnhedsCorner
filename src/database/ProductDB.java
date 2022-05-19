@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 import model.Dish;
@@ -19,7 +20,7 @@ public class ProductDB {
 		Product product = null;
 		String baseSelect = "select * from CHC_Products ";
 		baseSelect += "left outer join CHC_Dishes on CHC_Products.id = CHC_Dishes.fk_ProductID ";
-		baseSelect += "left outer join CHC_Ingredients on CHC_Products.id = CHC_Ingredients.fk_ProductID ";
+		baseSelect += "left outer join CHC_Menues on CHC_Products.id = CHC_Menues.fk_ProductID ";
 		baseSelect += "left outer join CHC_Drinks on CHC_Products.id = CHC_Drinks.fk_ProductID ";
 		baseSelect += "Where id = ?";
 		
@@ -55,8 +56,8 @@ public class ProductDB {
 				product = new Drink(price, name, type, alcPercent, drinkType, id);
 				break;
 			}
-			stmt.close();
-			con.commit();
+			//stmt.close();
+			//con.commit();
 		} catch (SQLException e) {
 			throw e;
 		}
@@ -107,7 +108,7 @@ public class ProductDB {
 				}
 				products.add(product);
 			}
-			stmt.close();
+			//stmt.close();
 		} catch (SQLException e) {
 			throw e;
 		}
@@ -134,7 +135,7 @@ public class ProductDB {
 				product = new Dish(price, name, "dish", vegetarian, dishType, id);
 				products.add(product);
 			}
-			stmt.close();
+			//stmt.close();
 		} catch (SQLException e) {
 			throw e;
 		}
@@ -162,7 +163,7 @@ public class ProductDB {
 				product = new Drink(price, name, "dish", alchoholPercent, drinkType, id);
 				products.add(product);
 			}
-			stmt.close();
+			//stmt.close();
 		} catch (SQLException e) {
 			throw e;
 		}
@@ -177,5 +178,48 @@ public class ProductDB {
 		}
 		return bool;
 	}
+
+	public void saveMenu(Product menu) throws DataAccessException, SQLException {
+		Connection con = DBConnection.getInstance().getConnection();
+		int insertedKeys = 1;
+		String baseInsert = "insert into CHC_Products(name, type, price) ";
+		baseInsert += "values (?,?,?);";
+		try {
+			PreparedStatement stmt = con.prepareStatement(baseInsert, Statement.RETURN_GENERATED_KEYS);
+			stmt.setString(1, "Menu "+ menu.getID());
+			stmt.setString(2, "menu");
+			stmt.setFloat(3, menu.getPrice());
+			insertedKeys = DBConnection.getInstance().executeInsertWithIdentity(stmt);
+			stmt.close();
+			saveMenues(menu, insertedKeys);
+			menu.setID(insertedKeys);
+		} catch (SQLException e) {
+			throw e;
+		}
+	}
+	
+	private void saveMenues(Product menu, int menuID) throws SQLException, DataAccessException {
+		Connection con = DBConnection.getInstance().getConnection();
+		String baseInsert = "insert Into CHC_Menues(fk_productID, fk_DrinkID) ";
+		baseInsert += "values (?,?)";
+		try {
+			PreparedStatement stmt = con.prepareStatement(baseInsert);
+			stmt.setInt(1, menuID);
+			int drinkID = 0;
+			if (((Menu) menu).getDrink() != null) {
+				drinkID = ((Menu) menu).getDrinkID();
+			}
+			if (drinkID == 0) {
+				stmt.setNull(2, drinkID);
+			} else {
+				stmt.setInt(2, drinkID);
+			}
+			stmt.execute();
+			stmt.close();
+		} catch (SQLException e) {
+			throw e;
+		}
+	}
+
 	
 }

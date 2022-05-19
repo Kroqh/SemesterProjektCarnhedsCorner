@@ -165,6 +165,12 @@ public class CreateOrderMenu extends JDialog {
 			}
 			{
 				JButton btnMenu = new JButton("3 Retters menu");
+				btnMenu.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						threeDishMenu(order);
+					}
+				});
 				panel.add(btnMenu);
 			}
 			{
@@ -420,6 +426,12 @@ public class CreateOrderMenu extends JDialog {
 			}
 		}
 		init(tableID);
+	}
+
+	protected void threeDishMenu(Order order2) {
+		JDialog threeDishMenu = new ThreeDishMenu(order);
+		threeDishMenu.setVisible(true);
+		
 	}
 
 	protected void saveOrder() {

@@ -36,7 +36,7 @@ public class TableSelect extends JDialog {
 	 */
 	public TableSelect() {
 		setModal(true);
-		setBounds(100, 100, 450, 185);
+		setBounds(100, 100, 450, 126);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
@@ -84,8 +84,8 @@ public class TableSelect extends JDialog {
 	private void CreateOrder() {
 				int tableID = (int) comboBox.getSelectedItem();
 				CreateOrderMenu createOrderMenu = new CreateOrderMenu(tableID);
+				createOrderMenu.setVisible(true);
 				this.dispose();
-				createOrderMenu.setVisible(true);	
 	}
 
 	private void init() {

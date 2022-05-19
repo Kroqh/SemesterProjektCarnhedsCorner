@@ -24,5 +24,8 @@ public class Product {
 	public String getName() {
 		return name;
 	}
-	
+
+	public void setID(int insertedKeys) {
+		this.id = insertedKeys;
+	}	
 }

@@ -12,7 +12,7 @@ public class Table {
 		return currentOrder;
 	}
 	public void releaseTable() {
-		currentOrder = null;
+		this.currentOrder = null;
 	}
 	
 	public Table(int tableID) {
