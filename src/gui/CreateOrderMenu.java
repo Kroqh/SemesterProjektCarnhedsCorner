@@ -34,6 +34,7 @@ import java.util.TimerTask;
 import javax.swing.JScrollPane;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
 
 public class CreateOrderMenu extends JDialog {
 
@@ -43,7 +44,8 @@ public class CreateOrderMenu extends JDialog {
 	private OrderController orderController;
 	private Timer timer;
 	private JLabel lblTotalPrice;
-
+	private DefaultListModel dlm = new DefaultListModel();
+	
 	/**
 	 * Launch the application.
 	 */
@@ -378,7 +380,9 @@ public class CreateOrderMenu extends JDialog {
 				panel.add(scrollPane, BorderLayout.CENTER);
 				{
 					listOfOrderLines = new JList<>();
+					listOfOrderLines.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 					scrollPane.setViewportView(listOfOrderLines);
+					
 				}
 			}
 			{
@@ -388,6 +392,13 @@ public class CreateOrderMenu extends JDialog {
 				{
 					JPanel panel_2 = new JPanel();
 					panel_1.add(panel_2, BorderLayout.NORTH);
+					{
+						JButton btnDeleteItemFromOrder = new JButton("Slet valgte element fra ordre ");
+						panel_2.add(btnDeleteItemFromOrder);
+						
+						
+						
+					}
 					{
 						lblTotalPrice = new JLabel("I alt : ");
 						panel_2.add(lblTotalPrice);
@@ -427,6 +438,13 @@ public class CreateOrderMenu extends JDialog {
 		}
 		init(tableID);
 	}
+	
+	private void DeleteItemFromOrder() {
+		
+		
+	}
+	
+	
 
 	protected void threeDishMenu(Order order2) {
 		JDialog threeDishMenu = new ThreeDishMenu(order);
