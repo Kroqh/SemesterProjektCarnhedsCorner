@@ -394,26 +394,6 @@ public class CreateOrderMenu extends JDialog {
 					JPanel panel_2 = new JPanel();
 					panel_1.add(panel_2, BorderLayout.NORTH);
 					{
-						JButton btnDeleteItemFromOrder = new JButton("Slet valgte element fra ordre ");
-						btnDeleteItemFromOrder.addMouseListener(new MouseAdapter() {
-							public void mouseClicked(MouseEvent e) {
-								DefaultListModel<OrderLine> model = (DefaultListModel<OrderLine>) listOfOrderLines.getModel();
-								int selectedIndex = listOfOrderLines.getSelectedIndex();
-								if (selectedIndex != -1) {
-								    model.remove(selectedIndex);
-								}
-								else {
-									System.out.println(selectedIndex);
-								}
-								
-							}
-						});
-						panel_2.add(btnDeleteItemFromOrder);
-						
-						
-						
-					}
-					{
 						lblTotalPrice = new JLabel("I alt : ");
 						panel_2.add(lblTotalPrice);
 					}
@@ -429,6 +409,26 @@ public class CreateOrderMenu extends JDialog {
 									saveOrder();
 							}
 						});
+						{
+							JButton btnDeleteItemFromOrder = new JButton("Slet valgte element fra ordre ");
+							panel_2.add(btnDeleteItemFromOrder);
+							btnDeleteItemFromOrder.addMouseListener(new MouseAdapter() {
+								public void mouseClicked(MouseEvent e) {
+									DefaultListModel<OrderLine> model = (DefaultListModel<OrderLine>) listOfOrderLines.getModel();
+									int selectedIndex = listOfOrderLines.getSelectedIndex();
+									if (selectedIndex != -1) {
+									    model.remove(selectedIndex);
+									}
+									else {
+										System.out.println(selectedIndex);
+									}
+									
+								}
+							});
+							
+							
+							
+						}
 						panel_2.add(btnPay);
 					}
 				}
@@ -479,8 +479,6 @@ public class CreateOrderMenu extends JDialog {
 		productMenu = new ProductMenu(type, order);
 		timer();
 		productMenu.setVisible(true);
-		
-		
 	}
 
 	public void init(int tableID) {
