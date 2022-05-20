@@ -450,12 +450,12 @@ public class CreateOrderMenu extends JDialog {
 		
 	}
 	
-	protected void threeDishMenu(Order order) {
+	private void threeDishMenu(Order order) {
 		JDialog threeDishMenu = new ThreeDishMenu(order);
 		threeDishMenu.setVisible(true);	
 	}
 
-	protected void saveOrder() {
+	private void saveOrder() {
 		PayAmount payAmount = new PayAmount();
 		payAmount.setVisible(true);
 		float amount = payAmount.getAmount();
@@ -471,13 +471,13 @@ public class CreateOrderMenu extends JDialog {
 		}
 	}
 
-	protected void createProductMenu(String type) throws SQLException, DataAccessException {
+	private void createProductMenu(String type) throws SQLException, DataAccessException {
 		productMenu = new ProductMenu(type, order);
 		timer();
 		productMenu.setVisible(true);
 	}
 
-	public void init(int tableID) {
+	private void init(int tableID) {
 		orderController = new OrderController();
 		orderController.createOrder(tableID);
 		order = orderController.getCurrentOrder();
@@ -500,7 +500,7 @@ public class CreateOrderMenu extends JDialog {
 		listOfOrderLines.setModel(dlm);
 	}
 	
-	public void timer() {
+	private void timer() {
 		timer = new Timer();
 		timer.schedule(new TimerTask() {
 			@Override
@@ -513,7 +513,7 @@ public class CreateOrderMenu extends JDialog {
 		}, 0, 1000);
 	}
 	
-	public void updateTotalPrice() {
+	private void updateTotalPrice() {
 		float totalPrice = 0;
 		totalPrice = orderController.getTotalPrice();
 		lblTotalPrice.setText("I alt : " +totalPrice+ " kr");
