@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 
@@ -44,11 +45,11 @@ public class CreateOrderMenu extends JDialog {
 	private OrderController orderController;
 	private Timer timer;
 	private JLabel lblTotalPrice;
-	private DefaultListModel dlm = new DefaultListModel();
+	private JDialog productMenu;
 	
 	/**
 	 * Launch the application.
-	 */
+	 *
 //	public static void main(String[] args) {
 //		try {
 //			CreateOrderMenu dialog = new CreateOrderMenu();
@@ -88,7 +89,7 @@ public class CreateOrderMenu extends JDialog {
 					public void mouseClicked(MouseEvent e) {
 						String type = "appetizer";
 						try {
-							productMenu(type);
+							createProductMenu(type);
 						} catch (SQLException e1) {
 							// TODO Auto-generated catch block
 							e1.printStackTrace();
@@ -109,7 +110,7 @@ public class CreateOrderMenu extends JDialog {
 					public void mouseClicked(MouseEvent e) {
 						String type = "forret";
 						try {
-							productMenu(type);
+							createProductMenu(type);
 						} catch (SQLException e1) {
 							// TODO Auto-generated catch block
 							e1.printStackTrace();
@@ -130,7 +131,7 @@ public class CreateOrderMenu extends JDialog {
 					public void mouseClicked(MouseEvent e) {
 						String type = "hovedret";
 						try {
-							productMenu(type);
+							createProductMenu(type);
 						} catch (SQLException e1) {
 							// TODO Auto-generated catch block
 							e1.printStackTrace();
@@ -151,7 +152,7 @@ public class CreateOrderMenu extends JDialog {
 					public void mouseClicked(MouseEvent e) {
 						String type = "dessert/ost";
 						try {
-							productMenu(type);
+							createProductMenu(type);
 						} catch (SQLException e1) {
 							// TODO Auto-generated catch block
 							e1.printStackTrace();
@@ -182,7 +183,7 @@ public class CreateOrderMenu extends JDialog {
 					public void mouseClicked(MouseEvent e) {
 						String type = "mousserende vin";
 						try {
-							productMenu(type);
+							createProductMenu(type);
 						} catch (SQLException e1) {
 							// TODO Auto-generated catch block
 							e1.printStackTrace();
@@ -202,7 +203,7 @@ public class CreateOrderMenu extends JDialog {
 					public void mouseClicked(MouseEvent e) {
 						String type = "rosévin";
 						try {
-							productMenu(type);
+							createProductMenu(type);
 						} catch (SQLException e1) {
 							// TODO Auto-generated catch block
 							e1.printStackTrace();
@@ -222,7 +223,7 @@ public class CreateOrderMenu extends JDialog {
 					public void mouseClicked(MouseEvent e) {
 						String type = "rødvin";
 						try {
-							productMenu(type);
+							createProductMenu(type);
 						} catch (SQLException e1) {
 							// TODO Auto-generated catch block
 							e1.printStackTrace();
@@ -242,7 +243,7 @@ public class CreateOrderMenu extends JDialog {
 					public void mouseClicked(MouseEvent e) {
 						String type = "hvidvin";
 						try {
-							productMenu(type);
+							createProductMenu(type);
 						} catch (SQLException e1) {
 							// TODO Auto-generated catch block
 							e1.printStackTrace();
@@ -262,7 +263,7 @@ public class CreateOrderMenu extends JDialog {
 					public void mouseClicked(MouseEvent e) {
 						String type = "øl";
 						try {
-							productMenu(type);
+							createProductMenu(type);
 						} catch (SQLException e1) {
 							// TODO Auto-generated catch block
 							e1.printStackTrace();
@@ -282,7 +283,7 @@ public class CreateOrderMenu extends JDialog {
 					public void mouseClicked(MouseEvent e) {
 						String type = "sodavand";
 						try {
-							productMenu(type);
+							createProductMenu(type);
 						} catch (SQLException e1) {
 							// TODO Auto-generated catch block
 							e1.printStackTrace();
@@ -302,7 +303,7 @@ public class CreateOrderMenu extends JDialog {
 					public void mouseClicked(MouseEvent e) {
 						String type = "thy øko saft";
 						try {
-							productMenu(type);
+							createProductMenu(type);
 						} catch (SQLException e1) {
 							// TODO Auto-generated catch block
 							e1.printStackTrace();
@@ -322,7 +323,7 @@ public class CreateOrderMenu extends JDialog {
 					public void mouseClicked(MouseEvent e) {
 						String type = "varme drikke";
 						try {
-							productMenu(type);
+							createProductMenu(type);
 						} catch (SQLException e1) {
 							// TODO Auto-generated catch block
 							e1.printStackTrace();
@@ -342,7 +343,7 @@ public class CreateOrderMenu extends JDialog {
 					public void mouseClicked(MouseEvent e) {
 						String type = "dessertvin og avec";
 						try {
-							productMenu(type);
+							createProductMenu(type);
 						} catch (SQLException e1) {
 							// TODO Auto-generated catch block
 							e1.printStackTrace();
@@ -394,6 +395,19 @@ public class CreateOrderMenu extends JDialog {
 					panel_1.add(panel_2, BorderLayout.NORTH);
 					{
 						JButton btnDeleteItemFromOrder = new JButton("Slet valgte element fra ordre ");
+						btnDeleteItemFromOrder.addMouseListener(new MouseAdapter() {
+							public void mouseClicked(MouseEvent e) {
+								DefaultListModel<OrderLine> model = (DefaultListModel<OrderLine>) listOfOrderLines.getModel();
+								int selectedIndex = listOfOrderLines.getSelectedIndex();
+								if (selectedIndex != -1) {
+								    model.remove(selectedIndex);
+								}
+								else {
+									System.out.println(selectedIndex);
+								}
+								
+							}
+						});
 						panel_2.add(btnDeleteItemFromOrder);
 						
 						
@@ -439,13 +453,6 @@ public class CreateOrderMenu extends JDialog {
 		init(tableID);
 	}
 	
-	private void DeleteItemFromOrder() {
-		
-		
-	}
-	
-	
-
 	protected void threeDishMenu(Order order2) {
 		JDialog threeDishMenu = new ThreeDishMenu(order);
 		threeDishMenu.setVisible(true);
@@ -468,9 +475,11 @@ public class CreateOrderMenu extends JDialog {
 		}
 	}
 
-	protected void productMenu(String type) throws SQLException, DataAccessException {
-		JDialog productMenu = new ProductMenu(type, order);
+	protected void createProductMenu(String type) throws SQLException, DataAccessException {
+		productMenu = new ProductMenu(type, order);
 		productMenu.setVisible(true);
+		timer();
+		
 	}
 
 	public void init(int tableID) {
@@ -485,7 +494,6 @@ public class CreateOrderMenu extends JDialog {
 	private void initializeOrderLines() {
 		OrderListRenderer olr = new OrderListRenderer();
 		listOfOrderLines.setCellRenderer(olr);
-		timer();
 	}
 	
 	private void updateOrderLineList() {
@@ -501,9 +509,11 @@ public class CreateOrderMenu extends JDialog {
 		timer = new Timer();
 		timer.schedule(new TimerTask() {
 			@Override
-			public void run() {
-				updateOrderLineList();
-				updateTotalPrice();
+			public void run(){
+				if (productMenu.isVisible()) {
+					updateOrderLineList();
+					updateTotalPrice();
+				}				
 			}
 		}, 0, 1000);
 	}
