@@ -2,6 +2,7 @@ package controller;
 import java.util.ArrayList;
 
 import database.DataAccessException;
+import database.IOrderDB;
 import database.OrderDB;
 import model.Order;
 import model.OrderLine;
@@ -13,7 +14,7 @@ public class OrderController {
 	private Order currentOrder;
 	private TableController tableController;
 	private ProductController productController;
-	private OrderDB orderDB;
+	private IOrderDB orderDB;
 	
 	public OrderController() {
 		tableController = new TableController();

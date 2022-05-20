@@ -80,7 +80,7 @@ public class PayAmount extends JDialog {
 		}
 	}
 
-	protected void setAmount() {
+	private void setAmount() {
 		try {
 		String sAmount = textAmount.getText();
 		amount = Float.parseFloat(sAmount);
@@ -90,7 +90,7 @@ public class PayAmount extends JDialog {
 		}
 	}
 	
-	float getAmount() {
+	public float getAmount() {
 		return amount;
 	}
 

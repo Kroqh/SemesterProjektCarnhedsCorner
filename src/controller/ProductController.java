@@ -6,11 +6,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import database.DataAccessException;
+import database.IProductDB;
 import database.ProductDB;
 
 public class ProductController {
 	
-	private ProductDB productDB;
+	private IProductDB productDB;
 	private ArrayList<Product> tempProducts;
 	
 	public ProductController() {
@@ -70,6 +71,6 @@ public class ProductController {
 	}
 
 	public void saveMenu(Product menu) throws DataAccessException, SQLException {
-		productDB.saveMenu(menu);
+		productDB.saveMenuProduct(menu);
 	}
 }

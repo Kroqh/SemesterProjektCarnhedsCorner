@@ -9,9 +9,9 @@ import java.util.ArrayList;
 import model.Order;
 import model.OrderLine;
 
-public class OrderDB {
+public class OrderDB implements IOrderDB {
 	
-	private OrderLineDB orderLineDB = new OrderLineDB();
+	private IOrderLineDB orderLineDB = new OrderLineDB();
 	
 	public void saveOrder(Order order) throws DataAccessException {
 		int insertedKey = 0;

@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 import model.OrderLine;
 
-public class OrderLineDB {
+public class OrderLineDB implements IOrderLineDB {
 
 	public void saveOrderLine(OrderLine orderLine, int orderID) throws DataAccessException {
 		

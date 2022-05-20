@@ -9,11 +9,10 @@ import java.util.ArrayList;
 
 import model.Dish;
 import model.Drink;
-import model.Ingredient;
 import model.Menu;
 import model.Product;
 
-public class ProductDB {
+public class ProductDB implements IProductDB {
 
 	public Product getProductByID(int id) throws DataAccessException, SQLException {
 		Connection con = DBConnection.getInstance().getConnection();
@@ -46,9 +45,6 @@ public class ProductDB {
 				boolean vegetarian = rs.getBoolean("vegetarian");
 				String dishType = rs.getString("dishType");
 				product = new Dish(price, name, type, vegetarian, dishType, id);
-				break;
-			case "ingrediens":
-				product = new Ingredient(price, name, type, id);
 				break;
 			case "drink":
 				float alcPercent = rs.getFloat("alcPercent");
@@ -96,9 +92,6 @@ public class ProductDB {
 					boolean vegetarian = rs.getBoolean("vegetarian");
 					String dishType = rs.getString("dishType");
 					product = new Dish(price, name, type, vegetarian, dishType, id);
-					break;
-				case "ingrediens":
-					product = new Ingredient(price, name, type, id);
 					break;
 				case "drink":
 					float alcPercent = rs.getFloat("alcPercent");
@@ -170,16 +163,8 @@ public class ProductDB {
 		
 		return products;
 	}
-	
-	public boolean byteToBoolean(int val) {
-		boolean bool = false;
-		if(val != 0) {
-			bool = true;
-		}
-		return bool;
-	}
 
-	public void saveMenu(Product menu) throws DataAccessException, SQLException {
+	public void saveMenuProduct(Product menu) throws DataAccessException, SQLException {
 		Connection con = DBConnection.getInstance().getConnection();
 		int insertedKeys = 1;
 		String baseInsert = "insert into CHC_Products(name, type, price) ";
@@ -191,14 +176,14 @@ public class ProductDB {
 			stmt.setFloat(3, menu.getPrice());
 			insertedKeys = DBConnection.getInstance().executeInsertWithIdentity(stmt);
 			stmt.close();
-			saveMenues(menu, insertedKeys);
+			saveMenu(menu, insertedKeys);
 			menu.setID(insertedKeys);
 		} catch (SQLException e) {
 			throw e;
 		}
 	}
 	
-	private void saveMenues(Product menu, int menuID) throws SQLException, DataAccessException {
+	private void saveMenu(Product menu, int menuID) throws SQLException, DataAccessException {
 		Connection con = DBConnection.getInstance().getConnection();
 		String baseInsert = "insert Into CHC_Menues(fk_productID, fk_DrinkID) ";
 		baseInsert += "values (?,?)";
