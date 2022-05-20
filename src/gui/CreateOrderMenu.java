@@ -477,8 +477,9 @@ public class CreateOrderMenu extends JDialog {
 
 	protected void createProductMenu(String type) throws SQLException, DataAccessException {
 		productMenu = new ProductMenu(type, order);
-		productMenu.setVisible(true);
 		timer();
+		productMenu.setVisible(true);
+		
 		
 	}
 
