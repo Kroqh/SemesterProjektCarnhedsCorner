@@ -414,6 +414,12 @@ public class CreateOrderMenu extends JDialog {
 							panel_2.add(btnDeleteItemFromOrder);
 							btnDeleteItemFromOrder.addMouseListener(new MouseAdapter() {
 								public void mouseClicked(MouseEvent e) {
+									DeleteSelectedItem();
+									
+								}
+
+								private void DeleteSelectedItem() {
+									// TODO Auto-generated method stub
 									DefaultListModel<OrderLine> model = (DefaultListModel<OrderLine>) listOfOrderLines.getModel();
 									int selectedIndex = listOfOrderLines.getSelectedIndex();
 									if (selectedIndex != -1) {
@@ -422,7 +428,6 @@ public class CreateOrderMenu extends JDialog {
 									else {
 										System.out.println(selectedIndex);
 									}
-									
 								}
 							});
 							
