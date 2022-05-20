@@ -23,7 +23,6 @@ public class TableController {
 		return table;
 	}
 	public void releaseTable(int tableID) {
-		//tableContainer.getTables().get(tableID).releaseTable();
 		tableContainer.setOrderToTable(tableID, null);
 	}
 	
@@ -31,6 +30,9 @@ public class TableController {
 		return tableContainer.getTables();
 	}
 
+	public Order getOrderFromTable(int tableID) {
+		return tableContainer.getTables().get(tableID).getCurrentOrder();
+	}
 	public void setOrderToTable(int tableID, Order order) {
 		tableContainer.setOrderToTable(tableID, order);
 	}

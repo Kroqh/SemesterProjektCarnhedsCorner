@@ -38,6 +38,15 @@ public class TableContainer {
         }
         return returnTable;
     }
+     public ArrayList<Table> getActiveTables(){
+    	 ArrayList<Table> activeTables = new ArrayList<Table>();
+    	 for(Table table : tables) {
+    		 if (table != null) {
+    			 activeTables.add(table);
+    		 }
+    	 }
+    	 return activeTables; 
+     }
 
 	public ArrayList<Table> getTables() {
 		return tables;

@@ -11,9 +11,6 @@ public class Table {
 	public Order getCurrentOrder() {
 		return currentOrder;
 	}
-	public void releaseTable() {
-		this.currentOrder = null;
-	}
 	
 	public Table(int tableID) {
 		this.tableID = tableID;

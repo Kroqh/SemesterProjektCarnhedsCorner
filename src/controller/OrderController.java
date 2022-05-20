@@ -34,13 +34,23 @@ public class OrderController {
 		currentOrder.addOrderLine(product, quantity);
 	}
 	
+	public void switchCurrentOrder(int tableID) {
+		Order order = tableController.getOrderFromTable(tableID);
+		if (order == null) {
+			throw new NullPointerException("No order exists on table");
+		}
+		else {
+			currentOrder = order;
+		}
+		
+	}
+	
 	public void addMenuToOrder(Product menu) {
 		currentOrder.addOrderLine(menu, 1);
 	}
 	public void saveOrder(float payAmount) throws DataAccessException, InsufficientPaymentException {
 		if (payAmount >= currentOrder.getTotalPrice()) {
 			currentOrder.setPaymentStatus(true);
-			int tableID = currentOrder.getTableID();
 			tableController.releaseTable(currentOrder.getTableID());
 			orderDB.saveOrder(currentOrder);
 		}
