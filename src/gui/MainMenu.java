@@ -95,7 +95,7 @@ public class MainMenu extends JFrame {
 		});
 	}
 	
-	public void createTableSelectMenu() {
+	private void createTableSelectMenu() {
 		tableSelect = new TableSelect();
 		tableSelect.setVisible(true);
 	}

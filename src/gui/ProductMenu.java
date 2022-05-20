@@ -695,7 +695,7 @@ public class ProductMenu extends JDialog {
 		init();
 	}
 	
-	protected void addProductToOrder(int buttonNR, int quantity, Order order) throws Exception {
+	public void addProductToOrder(int buttonNR, int quantity, Order order) throws Exception {
 		OrderController orderController = new OrderController();
 		JLabel labelID = labelsID.get(buttonNR-1);
 		String productIDString = labelID.getText();
@@ -709,7 +709,7 @@ public class ProductMenu extends JDialog {
 		orderController.addProductToOrder(productID, quantity);
 	}
 
-	public void init() throws SQLException, DataAccessException {
+	private void init() throws SQLException, DataAccessException {
 		intializeProducts();
 	}
 

@@ -137,7 +137,7 @@ public class ThreeDishMenu extends JDialog {
 	
 
 
-	protected void setMenu(Order order) {
+	private void setMenu(Order order) {
 		OrderController orderController = new OrderController();
 		orderController.setCurrentOrder(order);
 		String dishName = (String) comboBoxStarter.getSelectedItem();

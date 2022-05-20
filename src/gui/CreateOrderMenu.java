@@ -48,19 +48,6 @@ public class CreateOrderMenu extends JDialog {
 	private JDialog productMenu;
 	
 	/**
-	 * Launch the application.
-	 *
-//	public static void main(String[] args) {
-//		try {
-//			CreateOrderMenu dialog = new CreateOrderMenu();
-//			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-//			dialog.setVisible(true);
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//	}
-
-	/**
 	 * Create the dialog.
 	 */
 	public CreateOrderMenu(int tableID) {
@@ -457,11 +444,15 @@ public class CreateOrderMenu extends JDialog {
 		}
 		init(tableID);
 	}
-	
-	protected void threeDishMenu(Order order2) {
-		JDialog threeDishMenu = new ThreeDishMenu(order);
-		threeDishMenu.setVisible(true);
+
+	private void DeleteItemFromOrder() {
 		
+		
+	}
+	
+	protected void threeDishMenu(Order order) {
+		JDialog threeDishMenu = new ThreeDishMenu(order);
+		threeDishMenu.setVisible(true);	
 	}
 
 	protected void saveOrder() {

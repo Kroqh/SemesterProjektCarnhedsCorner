@@ -26,7 +26,7 @@ public class TableSelect extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
 	private TableController tableController;
-	private JComboBox comboBox;
+	private JComboBox<Integer> comboBox;
 	private ArrayList<Table> tables;
 	private Table table;
 
@@ -65,7 +65,7 @@ public class TableSelect extends JDialog {
 				okButton.addMouseListener(new MouseAdapter() {
 					@Override
 					public void mouseClicked(MouseEvent e) {
-						CreateOrder();
+						createOrder();
 					}
 				});
 				okButton.setActionCommand("OK");
@@ -81,7 +81,7 @@ public class TableSelect extends JDialog {
 		init();
 	}
 
-	private void CreateOrder() {
+	private void createOrder() {
 				int tableID = (int) comboBox.getSelectedItem();
 				CreateOrderMenu createOrderMenu = new CreateOrderMenu(tableID);
 				createOrderMenu.setVisible(true);
