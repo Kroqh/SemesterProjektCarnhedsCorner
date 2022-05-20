@@ -412,14 +412,8 @@ public class CreateOrderMenu extends JDialog {
 									if (selectedIndex != -1) {
 									    model.remove(selectedIndex);
 									}
-									else {
-										System.out.println(selectedIndex);
-									}
 								}
-							});
-							
-							
-							
+							});		
 						}
 						panel_2.add(btnPay);
 					}

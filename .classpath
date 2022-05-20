@@ -12,6 +12,5 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
-	<classpathentry kind="lib" path="C:/Users/Cydonion/Documents/UCn/Andet semester projekter/Mini Projekt Persistens/mssql-jdbc-10.2.0.jre11.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
