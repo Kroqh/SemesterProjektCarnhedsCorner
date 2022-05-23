@@ -406,12 +406,12 @@ public class CreateOrderMenu extends JDialog {
 								}
 
 								private void DeleteSelectedItem() {
-									// TODO Auto-generated method stub
-									DefaultListModel<OrderLine> model = (DefaultListModel<OrderLine>) listOfOrderLines.getModel();
-									int selectedIndex = listOfOrderLines.getSelectedIndex();
-									if (selectedIndex != -1) {
-									    model.remove(selectedIndex);
-									}
+									OrderLine orderLine = null;
+									    orderLine = listOfOrderLines.getSelectedValue();
+									    orderController.removeOrderLine(orderLine);
+									    updateOrderLineList();
+									    updateTotalPrice();
+									    
 								}
 							});		
 						}

@@ -35,8 +35,23 @@ public class Order {
 			OrderLine orderLine = new OrderLine(product,quantity);
 			orderLines.add(orderLine);
 		}
+				
+	}
+	
+	public void deleteOrderLine(Product product, int quantity) {
+		boolean found = false;
+		int i = 0;
+		while(orderLines.size() != 0 && found == false && i < orderLines.size() ) {
+			
+			if(orderLines.get(i).getProduct().getID() == product.getID()) {
+				found = true;
+				orderLines.remove(i);			
+			}
+			i++;
+		}
 		
 	}
+	
 	public int getTableID() {
 		return tableID;
 	}
@@ -65,6 +80,22 @@ public class Order {
 	}
 	public boolean isPaymentStatus() {
 		return paymentStatus;
+	}
+
+	public void removeOrderLine(OrderLine orderLine) {
+		// TODO Auto-generated method stub
+		boolean found = false;
+		int i = 0;
+		while(orderLines.size() != 0 && found == false && i < orderLines.size() ) {
+			
+			if(orderLines.get(i).getProduct().getID() == orderLine.getProductID()) {
+				
+				found = true;
+				orderLines.remove(i);			
+			}
+			i++;
+		}
+		
 	}
 	
 }

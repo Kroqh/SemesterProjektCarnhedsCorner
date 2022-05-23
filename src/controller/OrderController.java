@@ -92,4 +92,11 @@ public class OrderController {
 		} 
 		return products;
 	}
+
+
+	public void removeOrderLine(OrderLine orderLine) {
+		// TODO Auto-generated method stub
+		currentOrder.removeOrderLine(orderLine);
+		
+	}
 }	

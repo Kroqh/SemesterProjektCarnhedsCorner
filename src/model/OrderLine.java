@@ -18,7 +18,7 @@ public class OrderLine {
 	public Product getProduct() {
 		return product;
 	}
-	
+		
 	public int getProductID() {
 		return product.getID();
 	}
