@@ -31,10 +31,19 @@ public class TableController {
 	}
 
 	public Order getOrderFromTable(int tableID) {
-		return tableContainer.getTables().get(tableID).getCurrentOrder();
+		return tableContainer.findTableByID(tableID).getCurrentOrder();
 	}
 	public void setOrderToTable(int tableID, Order order) {
 		tableContainer.setOrderToTable(tableID, order);
+	}
+	
+	public ArrayList<Table> getActiveTables() {
+		ArrayList<Table> activeTables = tableContainer.getActiveTables();
+		return activeTables;
+	}
+
+	public ArrayList<Table> getInactiveTables() {
+		return tableContainer.getInactiveTables();
 	}
 	
 }

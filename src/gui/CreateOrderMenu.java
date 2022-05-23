@@ -50,7 +50,7 @@ public class CreateOrderMenu extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public CreateOrderMenu(int tableID) {
+	public CreateOrderMenu(int tableID, boolean isActive) {
 		setModal(true);
 		setBounds(100, 100, 960, 800);
 		getContentPane().setLayout(new BorderLayout());
@@ -426,22 +426,36 @@ public class CreateOrderMenu extends JDialog {
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				JButton okButton = new JButton("OK");
+				okButton.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						dispose();
+					}
+				});
 				okButton.setActionCommand("OK");
 				buttonPane.add(okButton);
 				getRootPane().setDefaultButton(okButton);
 			}
 			{
-				JButton cancelButton = new JButton("Cancel");
+				JButton cancelButton = new JButton("Annuller Salg");
+				cancelButton.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						cancelOrder(tableID);
+						dispose();
+					}
+				});
 				cancelButton.setActionCommand("Cancel");
 				buttonPane.add(cancelButton);
 			}
 		}
-		init(tableID);
+		init(tableID, isActive);
 	}
 
-	private void DeleteItemFromOrder() {
-		
-		
+	private void cancelOrder(int tableID) {
+		Order order = null;
+		orderController.setCurrentOrder(order);
+		orderController.setOrderToTable(tableID, order);
 	}
 	
 	private void threeDishMenu(Order order) {
@@ -454,14 +468,16 @@ public class CreateOrderMenu extends JDialog {
 		payAmount.setVisible(true);
 		float amount = payAmount.getAmount();
 		payAmount.dispose();
-		try {
-			orderController.saveOrder(amount);
-		} catch (DataAccessException e) {
-			JOptionPane.showMessageDialog(this, "Der er opstået en uventet fejl i forbindelsen med serveren, prøv igen");
-			e.printStackTrace();
-		} catch (InsufficientPaymentException e) {
-			JOptionPane.showMessageDialog(this, "Der er mangler at blive betalt yderligere " + (orderController.getTotalPrice() - amount) + " kr.");
-			e.printStackTrace();
+		if (amount >= orderController.getTotalPrice() && amount != 0) {
+			try {
+				orderController.saveOrder(amount);
+			} catch (DataAccessException e) {
+				JOptionPane.showMessageDialog(this, "Der er opstået en uventet fejl i forbindelsen med serveren, prøv igen");
+				e.printStackTrace();
+			} catch (InsufficientPaymentException e) {
+				JOptionPane.showMessageDialog(this, "Der er mangler at blive betalt yderligere " + (orderController.getTotalPrice() - amount) + " kr.");
+				e.printStackTrace();
+			}
 		}
 	}
 
@@ -471,13 +487,22 @@ public class CreateOrderMenu extends JDialog {
 		productMenu.setVisible(true);
 	}
 
-	private void init(int tableID) {
+	private void init(int tableID, boolean isActive) {
 		orderController = new OrderController();
-		orderController.createOrder(tableID);
-		order = orderController.getCurrentOrder();
-		TableController tableController = new TableController();
-		tableController.setOrderToTable(tableID, order);
+		if (!isActive) {
+			orderController.createOrder(tableID);
+			order = orderController.getCurrentOrder();
+			TableController tableController = new TableController();
+			tableController.setOrderToTable(tableID, order);
+		} else {
+			orderController.switchCurrentOrder(tableID);
+			order = orderController.getCurrentOrder();
+		}
 		initializeOrderLines();
+		if(isActive) {
+			updateOrderLineList();
+			updateTotalPrice();
+		}
 	}
 	
 	private void initializeOrderLines() {

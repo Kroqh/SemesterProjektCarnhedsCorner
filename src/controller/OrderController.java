@@ -1,4 +1,5 @@
 package controller;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import database.DataAccessException;
@@ -74,5 +75,21 @@ public class OrderController {
 	
 	public float getTotalPrice() {
 		return currentOrder.getTotalPrice();
+	}
+	
+	public void setOrderToTable(int tableID, Order order) {
+		tableController.setOrderToTable(tableID, order);
+	}
+
+
+	public ArrayList<Product> findAllProductsByType(String type) throws DataAccessException {
+		ArrayList<Product> products = null;
+		try {
+			products = productController.findAllProductsByType(type);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		return products;
 	}
 }	

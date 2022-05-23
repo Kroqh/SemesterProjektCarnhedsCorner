@@ -62,11 +62,17 @@ public class MainMenu extends JFrame {
 		btnNewOrder.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				createTableSelectMenu();
+				createTableSelectMenu(false);
 			}
 		});
 		
 		JButton BtnCurrentOrders = new JButton("Igangværende salg");
+		BtnCurrentOrders.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				createTableSelectMenu(true);
+			}
+		});
 		BtnCurrentOrders.setPreferredSize(new Dimension(150, 50));
 		
 		centerPanel.add(btnNewOrder);
@@ -95,8 +101,8 @@ public class MainMenu extends JFrame {
 		});
 	}
 	
-	private void createTableSelectMenu() {
-		tableSelect = new TableSelect();
+	private void createTableSelectMenu(boolean isActive) {
+		tableSelect = new TableSelect(isActive);
 		tableSelect.setVisible(true);
 	}
 }

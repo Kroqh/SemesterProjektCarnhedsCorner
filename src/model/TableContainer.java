@@ -38,18 +38,29 @@ public class TableContainer {
         }
         return returnTable;
     }
+     
+     public ArrayList<Table> getTables() {
+    	 return tables;
+     }
+     
      public ArrayList<Table> getActiveTables(){
     	 ArrayList<Table> activeTables = new ArrayList<Table>();
     	 for(Table table : tables) {
-    		 if (table != null) {
+    		 if (table.getCurrentOrder() != null) {
     			 activeTables.add(table);
     		 }
     	 }
     	 return activeTables; 
      }
 
-	public ArrayList<Table> getTables() {
-		return tables;
+	public ArrayList<Table> getInactiveTables() {
+		ArrayList<Table> inactiveTables = new ArrayList<Table>();
+		for(Table table : tables) {
+			if(table.getCurrentOrder() == null) {
+				inactiveTables.add(table);
+			}
+		}
+		return inactiveTables;
 	}
 
 

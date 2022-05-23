@@ -27,14 +27,14 @@ public class TableSelect extends JDialog {
 	private final JPanel contentPanel = new JPanel();
 	private TableController tableController;
 	private JComboBox<Integer> comboBox;
-	private ArrayList<Table> tables;
+	private ArrayList<Table> tables = new ArrayList<>();
 	private Table table;
 
 
 	/**
 	 * Create the dialog.
 	 */
-	public TableSelect() {
+	public TableSelect(boolean isActive) {
 		setModal(true);
 		setBounds(100, 100, 450, 126);
 		getContentPane().setLayout(new BorderLayout());
@@ -65,7 +65,7 @@ public class TableSelect extends JDialog {
 				okButton.addMouseListener(new MouseAdapter() {
 					@Override
 					public void mouseClicked(MouseEvent e) {
-						createOrder();
+						createOrder(isActive);
 					}
 				});
 				okButton.setActionCommand("OK");
@@ -74,33 +74,42 @@ public class TableSelect extends JDialog {
 			}
 			{
 				JButton cancelButton = new JButton("Cancel");
+				cancelButton.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						dispose();
+					}
+				});
 				cancelButton.setActionCommand("Cancel");
 				buttonPane.add(cancelButton);
 			}
 		}
-		init();
+		init(isActive);
 	}
+	
 
-	private void createOrder() {
+	private void createOrder(boolean isActive) {
 				int tableID = (int) comboBox.getSelectedItem();
-				CreateOrderMenu createOrderMenu = new CreateOrderMenu(tableID);
+				CreateOrderMenu createOrderMenu = new CreateOrderMenu(tableID, isActive);
 				createOrderMenu.setVisible(true);
 				this.dispose();
 	}
 
-	private void init() {
+	private void init(boolean isActive) {
 		tableController = new TableController();
-		tables = tableController.getTables();
-		initializeComboBox(tables);
+		if(isActive) {
+			tables = tableController.getActiveTables();
+		} else if(!isActive) {
+			tables = tableController.getInactiveTables();
+		}
+		initializeComboBox(tables, isActive);
 	}
 
-	private void initializeComboBox(ArrayList<Table> tables) {
+	private void initializeComboBox(ArrayList<Table> tables, boolean isActive) {
 		table = null;
 		for(int i = 0; i < tables.size(); i++) {
 			table = tables.get(i);
-			if(table.getCurrentOrder() == null) {
 			comboBox.addItem(table.getTableID());
-			}
 		}
 	}
 

@@ -682,14 +682,15 @@ public class ProductMenu extends JDialog {
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				JButton okButton = new JButton("OK");
+				okButton.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						dispose();
+					}
+				});
 				okButton.setActionCommand("OK");
 				buttonPane.add(okButton);
 				getRootPane().setDefaultButton(okButton);
-			}
-			{
-				JButton cancelButton = new JButton("Cancel");
-				cancelButton.setActionCommand("Cancel");
-				buttonPane.add(cancelButton);
 			}
 		}
 		init();
@@ -714,12 +715,12 @@ public class ProductMenu extends JDialog {
 	}
 
 	private void intializeProducts() {
-		ProductController productController = new ProductController();
+		OrderController orderController = new OrderController();
 		ArrayList<Product> products = new ArrayList<>();
 		try {
-			products = productController.findAllProductsByType(type);
-		} catch (SQLException | DataAccessException e) {
-			JOptionPane.showMessageDialog(this, "Der er opstået en uventet fejl i forbindelsen med servren, prøv igen");
+			products = orderController.findAllProductsByType(type);
+		} catch (DataAccessException e) {
+			JOptionPane.showMessageDialog(this, "Der er opstået en uventet fejl i forbindelsen med serveren, prøv igen");
 			e.printStackTrace();
 		}
 		for (int i=0; i<products.size(); i++) {
