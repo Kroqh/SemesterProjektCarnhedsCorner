@@ -162,10 +162,34 @@ public class ThreeDishMenu extends JDialog {
 
 	private void init() {
 		productController = new ProductController();
-		initializeComboBox(comboBoxStarter, "forret");
-		initializeComboBox(comboBoxMain, "hovedret");
-		initializeComboBox(comboBoxDessertCheese, "dessert/ost");
+		initializeComboBoxes();
 	}
+
+	private void initializeComboBoxes() {
+		Thread t1 = new Thread("T1" ) {
+			
+			public void run() {
+					initializeComboBox(comboBoxStarter, "forret");
+			}
+		};
+		
+		Thread t2 = new Thread("T2") {
+			public void run() {
+				initializeComboBox(comboBoxMain, "hovedret");
+			}
+		};
+		Thread t3 = new Thread("T2") {
+			public void run() {
+				initializeComboBox(comboBoxDessertCheese, "dessert/ost");
+			}
+		};
+		t1.start();
+		t2.start();
+		t3.start();
+		
+	}
+
+
 
 	private void initializeComboBox(JComboBox comboBox, String dishType) {
 		ArrayList<Product> products = new ArrayList<>();
