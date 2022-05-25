@@ -27,7 +27,6 @@ public class Order {
 			if(orderLines.get(i).getProduct().getID() == product.getID()) {
 				found = true;
 				orderLines.get(i).addQuantity(quantity);
-						
 			}
 			i++;
 		}
@@ -38,24 +37,9 @@ public class Order {
 				
 	}
 	
-	public void deleteOrderLine(Product product, int quantity) {
-		boolean found = false;
-		int i = 0;
-		while(orderLines.size() != 0 && found == false && i < orderLines.size() ) {
-			
-			if(orderLines.get(i).getProduct().getID() == product.getID()) {
-				found = true;
-				orderLines.remove(i);			
-			}
-			i++;
-		}
-		
-	}
-	
 	public int getTableID() {
 		return tableID;
 	}
-
 
 	public float getTotalPrice() {
 		
@@ -83,7 +67,6 @@ public class Order {
 	}
 
 	public void removeOrderLine(OrderLine orderLine) {
-		// TODO Auto-generated method stub
 		boolean found = false;
 		int i = 0;
 		while(orderLines.size() != 0 && found == false && i < orderLines.size() ) {

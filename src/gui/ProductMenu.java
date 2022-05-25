@@ -13,6 +13,7 @@ import javax.swing.border.EmptyBorder;
 
 import controller.OrderController;
 import controller.ProductController;
+import controller.ProductNotFoundException;
 import database.DataAccessException;
 import model.Order;
 import model.OrderLine;
@@ -41,8 +42,9 @@ public class ProductMenu extends JDialog {
 	 * Create the dialog.
 	 * @throws DataAccessException 
 	 * @throws SQLException 
+	 * @throws ProductNotFoundException 
 	 */
-	public ProductMenu(String type, Order order) throws SQLException, DataAccessException {
+	public ProductMenu(String type, Order order) {
 		labelsName = new ArrayList<>();
 		labelsPrice = new ArrayList<>();
 		labelsID = new ArrayList<>();
@@ -76,12 +78,7 @@ public class ProductMenu extends JDialog {
 					btnProduct1.addMouseListener(new MouseAdapter() {
 						@Override
 						public void mouseClicked(MouseEvent e) {
-							try {
-								addProductToOrder(1, 1, order);
-							} catch (Exception e1) {
-								// TODO Auto-generated catch block
-								e1.printStackTrace();
-							}
+							addProductToOrder(1, 1, order);
 						}
 					});
 					btnProduct1.setPreferredSize( new Dimension( 100, 100 ));
@@ -114,12 +111,7 @@ public class ProductMenu extends JDialog {
 					btnProduct2.addMouseListener(new MouseAdapter() {
 						@Override
 						public void mouseClicked(MouseEvent e) {
-							try {
-								addProductToOrder(2, 1, order);
-							} catch (Exception e1) {
-								// TODO Auto-generated catch block
-								e1.printStackTrace();
-							}
+							addProductToOrder(2, 1, order);
 						}
 					});
 					btnProduct2.setPreferredSize( new Dimension( 100, 100 ));
@@ -152,12 +144,7 @@ public class ProductMenu extends JDialog {
 					btnProduct3.addMouseListener(new MouseAdapter() {
 						@Override
 						public void mouseClicked(MouseEvent e) {
-							try {
-								addProductToOrder(3, 1, order);
-							} catch (Exception e1) {
-								// TODO Auto-generated catch block
-								e1.printStackTrace();
-							}
+							addProductToOrder(3, 1, order);
 						}
 					});
 					btnProduct3.setPreferredSize( new Dimension( 100, 100 ));
@@ -191,12 +178,7 @@ public class ProductMenu extends JDialog {
 					btnProduct4.addMouseListener(new MouseAdapter() {
 						@Override
 						public void mouseClicked(MouseEvent e) {
-							try {
-								addProductToOrder(4, 1, order);
-							} catch (Exception e1) {
-								// TODO Auto-generated catch block
-								e1.printStackTrace();
-							}
+							addProductToOrder(4, 1, order);
 						}
 					});
 					btnProduct4.setPreferredSize( new Dimension( 100, 100 ));
@@ -229,12 +211,7 @@ public class ProductMenu extends JDialog {
 					btnProduct5.addMouseListener(new MouseAdapter() {
 						@Override
 						public void mouseClicked(MouseEvent e) {
-							try {
-								addProductToOrder(5, 1, order);
-							} catch (Exception e1) {
-								// TODO Auto-generated catch block
-								e1.printStackTrace();
-							}
+							addProductToOrder(5, 1, order);
 						}
 					});
 					btnProduct5.setPreferredSize( new Dimension( 100, 100 ));
@@ -267,12 +244,7 @@ public class ProductMenu extends JDialog {
 					btnProduct6.addMouseListener(new MouseAdapter() {
 						@Override
 						public void mouseClicked(MouseEvent e) {
-							try {
-								addProductToOrder(6, 1, order);
-							} catch (Exception e1) {
-								// TODO Auto-generated catch block
-								e1.printStackTrace();
-							}
+							addProductToOrder(6, 1, order);
 						}
 					});
 					btnProduct6.setPreferredSize( new Dimension( 100, 100 ));
@@ -305,12 +277,7 @@ public class ProductMenu extends JDialog {
 					btnProduct7.addMouseListener(new MouseAdapter() {
 						@Override
 						public void mouseClicked(MouseEvent e) {
-							try {
-								addProductToOrder(7, 1, order);
-							} catch (Exception e1) {
-								// TODO Auto-generated catch block
-								e1.printStackTrace();
-							}
+							addProductToOrder(7, 1, order);
 						}
 					});
 					btnProduct7.setPreferredSize( new Dimension( 100, 100 ));
@@ -343,12 +310,7 @@ public class ProductMenu extends JDialog {
 					btnProduct8.addMouseListener(new MouseAdapter() {
 						@Override
 						public void mouseClicked(MouseEvent e) {
-							try {
-								addProductToOrder(8, 1, order);
-							} catch (Exception e1) {
-								// TODO Auto-generated catch block
-								e1.printStackTrace();
-							}
+							addProductToOrder(8, 1, order);
 						}
 					});
 					btnProduct8.setPreferredSize( new Dimension( 100, 100 ));
@@ -381,12 +343,7 @@ public class ProductMenu extends JDialog {
 					btnProduct9.addMouseListener(new MouseAdapter() {
 						@Override
 						public void mouseClicked(MouseEvent e) {
-							try {
-								addProductToOrder(9, 1, order);
-							} catch (Exception e1) {
-								// TODO Auto-generated catch block
-								e1.printStackTrace();
-							}
+							addProductToOrder(9, 1, order);
 						}
 					});
 					btnProduct9.setPreferredSize( new Dimension( 100, 100 ));
@@ -419,12 +376,7 @@ public class ProductMenu extends JDialog {
 					btnProduct10.addMouseListener(new MouseAdapter() {
 						@Override
 						public void mouseClicked(MouseEvent e) {
-							try {
-								addProductToOrder(10, 1, order);
-							} catch (Exception e1) {
-								// TODO Auto-generated catch block
-								e1.printStackTrace();
-							}
+							addProductToOrder(10, 1, order);
 						}
 					});
 					btnProduct10.setPreferredSize( new Dimension( 100, 100 ));
@@ -457,12 +409,7 @@ public class ProductMenu extends JDialog {
 					btnProduct11.addMouseListener(new MouseAdapter() {
 						@Override
 						public void mouseClicked(MouseEvent e) {
-							try {
-								addProductToOrder(11, 1, order);
-							} catch (Exception e1) {
-								// TODO Auto-generated catch block
-								e1.printStackTrace();
-							}
+							addProductToOrder(11, 1, order);
 						}
 					});
 					btnProduct11.setPreferredSize( new Dimension( 100, 100 ));
@@ -495,12 +442,7 @@ public class ProductMenu extends JDialog {
 					btnProduct12.addMouseListener(new MouseAdapter() {
 						@Override
 						public void mouseClicked(MouseEvent e) {
-							try {
-								addProductToOrder(12, 1, order);
-							} catch (Exception e1) {
-								// TODO Auto-generated catch block
-								e1.printStackTrace();
-							}
+							addProductToOrder(12, 1, order);
 						}
 					});
 					btnProduct12.setPreferredSize( new Dimension( 100, 100 ));
@@ -533,12 +475,7 @@ public class ProductMenu extends JDialog {
 					btnProduct13.addMouseListener(new MouseAdapter() {
 						@Override
 						public void mouseClicked(MouseEvent e) {
-							try {
-								addProductToOrder(13, 1, order);
-							} catch (Exception e1) {
-								// TODO Auto-generated catch block
-								e1.printStackTrace();
-							}
+							addProductToOrder(13, 1, order);
 						}
 					});
 					btnProduct13.setPreferredSize( new Dimension( 100, 100 ));
@@ -571,12 +508,7 @@ public class ProductMenu extends JDialog {
 					btnProduct14.addMouseListener(new MouseAdapter() {
 						@Override
 						public void mouseClicked(MouseEvent e) {
-							try {
-								addProductToOrder(14, 1, order);
-							} catch (Exception e1) {
-								// TODO Auto-generated catch block
-								e1.printStackTrace();
-							}
+							addProductToOrder(14, 1, order);
 						}
 					});
 					btnProduct14.setPreferredSize( new Dimension( 100, 100 ));
@@ -609,12 +541,7 @@ public class ProductMenu extends JDialog {
 					btnProduct15.addMouseListener(new MouseAdapter() {
 						@Override
 						public void mouseClicked(MouseEvent e) {
-							try {
-								addProductToOrder(15, 1, order);
-							} catch (Exception e1) {
-								// TODO Auto-generated catch block
-								e1.printStackTrace();
-							}
+							addProductToOrder(15, 1, order);
 						}
 					});
 					btnProduct15.setPreferredSize( new Dimension( 100, 100 ));
@@ -647,12 +574,7 @@ public class ProductMenu extends JDialog {
 					btnProduct16.addMouseListener(new MouseAdapter() {
 						@Override
 						public void mouseClicked(MouseEvent e) {
-							try {
-								addProductToOrder(16, 1, order);
-							} catch (Exception e1) {
-								// TODO Auto-generated catch block
-								e1.printStackTrace();
-							}
+							addProductToOrder(16, 1, order);
 						}
 					});
 					btnProduct16.setPreferredSize( new Dimension( 100, 100 ));
@@ -696,8 +618,8 @@ public class ProductMenu extends JDialog {
 		init();
 	}
 	
-	public void addProductToOrder(int buttonNR, int quantity, Order order) throws Exception {
-		OrderController orderController = new OrderController();
+	public void addProductToOrder(int buttonNR, int quantity, Order order) {
+		ProductController productController = new ProductController();
 		JLabel labelID = labelsID.get(buttonNR-1);
 		String productIDString = labelID.getText();
 		int productID = 0;
@@ -706,22 +628,35 @@ public class ProductMenu extends JDialog {
 		} catch (NumberFormatException ex) {
 			ex.printStackTrace();
 		}
-		orderController.setCurrentOrder(order);
-		orderController.addProductToOrder(productID, quantity);
+		productController.setCurrentOrder(order);
+
+			try {
+				productController.addProductToOrder(productID, quantity);
+			} catch (NullPointerException e) {
+				JOptionPane.showMessageDialog(this, e);
+				e.printStackTrace();
+			} catch (ProductNotFoundException e) {
+				JOptionPane.showMessageDialog(this, e);
+			} catch (DataAccessException e) {
+				JOptionPane.showMessageDialog(this, "Der kunne ikke oprettes forbindelse med databasen");
+				e.printStackTrace();
+			}
+
 	}
 
-	private void init() throws SQLException, DataAccessException {
+	private void init() {
 		intializeProducts();
 	}
 
 	private void intializeProducts() {
-		OrderController orderController = new OrderController();
+		ProductController productController = new ProductController();
 		ArrayList<Product> products = new ArrayList<>();
 		try {
-			products = orderController.findAllProductsByType(type);
+			products = productController.findAllProductsByType(type);
 		} catch (DataAccessException e) {
-			JOptionPane.showMessageDialog(this, "Der er opstået en uventet fejl i forbindelsen med serveren, prøv igen");
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(this, "Der kunne ikke oprettes forbindelse med databasen");
+		} catch (ProductNotFoundException e) {
+			JOptionPane.showMessageDialog(this, e);
 		}
 		for (int i=0; i<products.size(); i++) {
 			JPanel panel = panels.get(i);

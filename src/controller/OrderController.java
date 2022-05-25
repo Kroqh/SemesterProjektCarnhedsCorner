@@ -1,5 +1,4 @@
 package controller;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 import database.DataAccessException;
@@ -8,18 +7,14 @@ import database.OrderDB;
 import model.Order;
 import model.OrderLine;
 import model.Product;
-import model.Table;
-import model.Menu;
 
 public class OrderController {
 	private Order currentOrder;
 	private TableController tableController;
-	private ProductController productController;
 	private IOrderDB orderDB;
 	
 	public OrderController() {
 		tableController = new TableController();
-		productController = new ProductController();
 		orderDB = new OrderDB();
 	}
 	
@@ -28,10 +23,9 @@ public class OrderController {
 		currentOrder = new Order(tableID);
 	}
 	
-	public void addProductToOrder(int productID, int quantity) throws Exception {
-		Product product = productController.findProductByID(productID);
+	public void addProductToOrder(Product product, int quantity) throws NullPointerException {
 		if (product == null) {
-			throw new NullPointerException("Product null???");
+			throw new NullPointerException("det valgte produkt findes ikke");
 		}
 		currentOrder.addOrderLine(product, quantity);
 	}
@@ -44,21 +38,16 @@ public class OrderController {
 		else {
 			currentOrder = order;
 		}
-		
 	}
 	
 	public void addMenuToOrder(Product menu) {
 		currentOrder.addOrderLine(menu, 1);
 	}
-	public void saveOrder(float payAmount) throws DataAccessException, InsufficientPaymentException {
-		if (payAmount >= currentOrder.getTotalPrice()) {
+	
+	public void saveOrder(float payAmount) throws DataAccessException{
 			currentOrder.setPaymentStatus(true);
 			tableController.releaseTable(currentOrder.getTableID());
 			orderDB.saveOrder(currentOrder);
-		}
-		else {
-			throw new InsufficientPaymentException("Insufficient payment");
-		}
 	}
 	
 	public Order getCurrentOrder() {
@@ -81,22 +70,7 @@ public class OrderController {
 		tableController.setOrderToTable(tableID, order);
 	}
 
-
-	public ArrayList<Product> findAllProductsByType(String type) throws DataAccessException {
-		ArrayList<Product> products = null;
-		try {
-			products = productController.findAllProductsByType(type);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} 
-		return products;
-	}
-
-
 	public void removeOrderLine(OrderLine orderLine) {
-		// TODO Auto-generated method stub
 		currentOrder.removeOrderLine(orderLine);
-		
 	}
 }	

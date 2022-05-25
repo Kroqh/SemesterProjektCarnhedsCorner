@@ -12,6 +12,7 @@ import javax.swing.border.EmptyBorder;
 
 import controller.OrderController;
 import controller.ProductController;
+import controller.ProductNotFoundException;
 import controller.TableController;
 import database.DataAccessException;
 import model.Dish;
@@ -21,6 +22,8 @@ import model.Product;
 import model.Table;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -40,19 +43,6 @@ public class ThreeDishMenu extends JDialog {
 	private JComboBox comboBoxStarter;
 	private JTextField textFieldNewPrice;
 	
-//	public static void main(String[] args) {
-//		try {
-//			Order order = new Order(0);
-//			ThreeDishMenu threeDishMenu = new ThreeDishMenu(order);
-//			threeDishMenu.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-//			threeDishMenu.setVisible(true);
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//	}
-	/**
-	 * Create the dialog.
-	 */
 	public ThreeDishMenu(Order order) {
 		setModal(true);
 		setBounds(100, 100, 675, 161);
@@ -138,8 +128,7 @@ public class ThreeDishMenu extends JDialog {
 
 
 	private void setMenu(Order order) {
-		OrderController orderController = new OrderController();
-		orderController.setCurrentOrder(order);
+		productController.setCurrentOrder(order);
 		String dishName = (String) comboBoxStarter.getSelectedItem();
 		String dishName2 = (String) comboBoxMain.getSelectedItem();
 		String dishName3 = (String) comboBoxMain.getSelectedItem();
@@ -150,13 +139,14 @@ public class ThreeDishMenu extends JDialog {
 			price = Float.parseFloat(priceString);
 		}
 		Product menu = productController.create3DishMenu(price, dishName, dishName2, dishName3);
-		try {
-			productController.saveMenu(menu);
-			orderController.addMenuToOrder(menu);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+
+			try {
+				productController.saveMenu(menu);
+				productController.addMenuToOrder(menu);
+			} catch (Exception e) {
+				JOptionPane.showMessageDialog(this, e);
+			}
+
 		this.dispose();
 	}
 
@@ -195,12 +185,10 @@ public class ThreeDishMenu extends JDialog {
 		ArrayList<Product> products = new ArrayList<>();
 		try {
 			products = productController.findAllProductsByType(dishType);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		}catch (ProductNotFoundException e) {
+			JOptionPane.showMessageDialog(this, e);
 		} catch (DataAccessException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(this, "Der kunne ikke oprettes forbindelse til database, prøv igen");
 		}
 		Product product = null;
 		for(int i = 0; i < products.size(); i++) {

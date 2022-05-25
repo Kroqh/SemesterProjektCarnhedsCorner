@@ -7,6 +7,9 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import controller.InsufficientPaymentException;
+
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
@@ -25,7 +28,8 @@ public class PayAmount extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public PayAmount() {
+	public PayAmount(float totalPrice) {
+		
 		setModal(true);
 		setBounds(100, 100, 450, 139);
 		getContentPane().setLayout(new BorderLayout());
@@ -52,7 +56,7 @@ public class PayAmount extends JDialog {
 				okButton.addMouseListener(new MouseAdapter() {
 					@Override
 					public void mouseClicked(MouseEvent e) {
-						setAmount();
+						setAmount(totalPrice);
 					}
 				});
 				okButton.setActionCommand("OK");
@@ -73,11 +77,15 @@ public class PayAmount extends JDialog {
 		}
 	}
 
-	private void setAmount() {
+	private void setAmount(float totalPrice) {
 		try {
-		String sAmount = textAmount.getText();
-		amount = Float.parseFloat(sAmount);
-		this.setVisible(false);
+			String sAmount = textAmount.getText();
+			amount = Float.parseFloat(sAmount);
+			if (totalPrice > amount) {
+				JOptionPane.showMessageDialog(this, "Der skal betales minimum " + (totalPrice) + " kr.");
+			} else {
+				this.setVisible(false);
+			}
 		} catch (NumberFormatException e) {
 			JOptionPane.showMessageDialog(this, "Beløbet kan ikke være 0");
 		}

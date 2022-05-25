@@ -14,6 +14,7 @@ import javax.swing.border.EmptyBorder;
 
 import controller.InsufficientPaymentException;
 import controller.OrderController;
+import controller.ProductNotFoundException;
 import controller.TableController;
 import database.DataAccessException;
 import model.Order;
@@ -46,6 +47,7 @@ public class CreateOrderMenu extends JDialog {
 	private Timer timer;
 	private JLabel lblTotalPrice;
 	private JDialog productMenu;
+	private JDialog threeDishMenu;
 	
 	/**
 	 * Create the dialog.
@@ -75,15 +77,7 @@ public class CreateOrderMenu extends JDialog {
 					@Override
 					public void mouseClicked(MouseEvent e) {
 						String type = "appetizer";
-						try {
-							createProductMenu(type);
-						} catch (SQLException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						} catch (DataAccessException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						}
+						createProductMenu(type);
 						updateOrderLineList();
 					}
 				});
@@ -96,15 +90,7 @@ public class CreateOrderMenu extends JDialog {
 					@Override
 					public void mouseClicked(MouseEvent e) {
 						String type = "forret";
-						try {
-							createProductMenu(type);
-						} catch (SQLException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						} catch (DataAccessException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						}
+						createProductMenu(type);
 						updateOrderLineList();
 					}
 				});
@@ -117,15 +103,7 @@ public class CreateOrderMenu extends JDialog {
 					@Override
 					public void mouseClicked(MouseEvent e) {
 						String type = "hovedret";
-						try {
-							createProductMenu(type);
-						} catch (SQLException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						} catch (DataAccessException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						}
+						createProductMenu(type);
 						updateOrderLineList();
 					}
 				});
@@ -138,15 +116,7 @@ public class CreateOrderMenu extends JDialog {
 					@Override
 					public void mouseClicked(MouseEvent e) {
 						String type = "dessert/ost";
-						try {
-							createProductMenu(type);
-						} catch (SQLException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						} catch (DataAccessException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						}
+						createProductMenu(type);
 						updateOrderLineList();
 					}
 				});
@@ -169,15 +139,7 @@ public class CreateOrderMenu extends JDialog {
 					@Override
 					public void mouseClicked(MouseEvent e) {
 						String type = "mousserende vin";
-						try {
-							createProductMenu(type);
-						} catch (SQLException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						} catch (DataAccessException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						}
+						createProductMenu(type);
 						updateOrderLineList();
 					}
 				});
@@ -189,15 +151,7 @@ public class CreateOrderMenu extends JDialog {
 					@Override
 					public void mouseClicked(MouseEvent e) {
 						String type = "rosévin";
-						try {
-							createProductMenu(type);
-						} catch (SQLException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						} catch (DataAccessException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						}
+						createProductMenu(type);
 						updateOrderLineList();
 					}
 				});
@@ -209,15 +163,7 @@ public class CreateOrderMenu extends JDialog {
 					@Override
 					public void mouseClicked(MouseEvent e) {
 						String type = "rødvin";
-						try {
-							createProductMenu(type);
-						} catch (SQLException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						} catch (DataAccessException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						}
+						createProductMenu(type);
 						updateOrderLineList();
 					}
 				});
@@ -229,15 +175,7 @@ public class CreateOrderMenu extends JDialog {
 					@Override
 					public void mouseClicked(MouseEvent e) {
 						String type = "hvidvin";
-						try {
-							createProductMenu(type);
-						} catch (SQLException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						} catch (DataAccessException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						}
+						createProductMenu(type);
 						updateOrderLineList();
 					}
 				});
@@ -249,15 +187,7 @@ public class CreateOrderMenu extends JDialog {
 					@Override
 					public void mouseClicked(MouseEvent e) {
 						String type = "øl";
-						try {
-							createProductMenu(type);
-						} catch (SQLException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						} catch (DataAccessException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						}
+						createProductMenu(type);
 						updateOrderLineList();
 					}
 				});
@@ -269,15 +199,7 @@ public class CreateOrderMenu extends JDialog {
 					@Override
 					public void mouseClicked(MouseEvent e) {
 						String type = "sodavand";
-						try {
-							createProductMenu(type);
-						} catch (SQLException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						} catch (DataAccessException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						}
+						createProductMenu(type);
 						updateOrderLineList();
 					}
 				});
@@ -289,15 +211,7 @@ public class CreateOrderMenu extends JDialog {
 					@Override
 					public void mouseClicked(MouseEvent e) {
 						String type = "thy øko saft";
-						try {
-							createProductMenu(type);
-						} catch (SQLException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						} catch (DataAccessException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						}
+						createProductMenu(type);
 						updateOrderLineList();
 					}
 				});
@@ -309,15 +223,7 @@ public class CreateOrderMenu extends JDialog {
 					@Override
 					public void mouseClicked(MouseEvent e) {
 						String type = "varme drikke";
-						try {
-							createProductMenu(type);
-						} catch (SQLException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						} catch (DataAccessException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						}
+						createProductMenu(type);
 						updateOrderLineList();
 					}
 				});
@@ -329,15 +235,7 @@ public class CreateOrderMenu extends JDialog {
 					@Override
 					public void mouseClicked(MouseEvent e) {
 						String type = "dessertvin og avec";
-						try {
-							createProductMenu(type);
-						} catch (SQLException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						} catch (DataAccessException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						}
+						createProductMenu(type);
 						updateOrderLineList();
 					}
 				});
@@ -453,37 +351,36 @@ public class CreateOrderMenu extends JDialog {
 	}
 
 	private void cancelOrder(int tableID) {
+		timer.cancel();
 		Order order = null;
 		orderController.setCurrentOrder(order);
 		orderController.setOrderToTable(tableID, order);
 	}
 	
 	private void threeDishMenu(Order order) {
-		JDialog threeDishMenu = new ThreeDishMenu(order);
+		threeDishMenu = new ThreeDishMenu(order);
 		threeDishMenu.setVisible(true);	
 	}
 
 	private void saveOrder() {
-		PayAmount payAmount = new PayAmount();
+		float totalPrice = orderController.getTotalPrice();
+		PayAmount payAmount = new PayAmount(totalPrice);
 		payAmount.setVisible(true);
 		float amount = payAmount.getAmount();
 		payAmount.dispose();
-		if (amount >= orderController.getTotalPrice() && amount != 0) {
+		if (amount >= totalPrice && amount != 0) {
 			try {
 				orderController.saveOrder(amount);
+				JOptionPane.showMessageDialog(this, "Salget er nu gemt");
 			} catch (DataAccessException e) {
 				JOptionPane.showMessageDialog(this, "Der er opstået en uventet fejl i forbindelsen med serveren, prøv igen");
-				e.printStackTrace();
-			} catch (InsufficientPaymentException e) {
-				JOptionPane.showMessageDialog(this, "Der er mangler at blive betalt yderligere " + (orderController.getTotalPrice() - amount) + " kr.");
 				e.printStackTrace();
 			}
 		}
 	}
 
-	private void createProductMenu(String type) throws SQLException, DataAccessException {
+	private void createProductMenu(String type) {
 		productMenu = new ProductMenu(type, order);
-		timer();
 		productMenu.setVisible(true);
 	}
 
@@ -503,6 +400,7 @@ public class CreateOrderMenu extends JDialog {
 			updateOrderLineList();
 			updateTotalPrice();
 		}
+		timer();
 	}
 	
 	private void initializeOrderLines() {
@@ -524,10 +422,8 @@ public class CreateOrderMenu extends JDialog {
 		timer.schedule(new TimerTask() {
 			@Override
 			public void run(){
-				if (productMenu.isVisible()) {
-					updateOrderLineList();
-					updateTotalPrice();
-				}				
+				updateOrderLineList();
+				updateTotalPrice();
 			}
 		}, 0, 1000);
 	}

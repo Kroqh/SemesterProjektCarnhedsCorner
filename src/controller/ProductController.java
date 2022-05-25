@@ -1,5 +1,6 @@
 package controller;
 import model.Menu;
+import model.Order;
 import model.Product;
 
 import java.sql.SQLException;
@@ -13,26 +14,38 @@ public class ProductController {
 	
 	private IProductDB productDB;
 	private ArrayList<Product> tempProducts;
+	private OrderController orderController;
 	
 	public ProductController() {
 		productDB = new ProductDB();
 		tempProducts = new ArrayList<>();
+		orderController = new OrderController();
 	}
 
-	public Product findProductByID(int productID) throws Exception {
-		return productDB.getProductByID(productID);
+	public Product findProductByID(int productID) throws ProductNotFoundException, DataAccessException {
+		Product product = null;
+		try {
+			product = productDB.getProductByID(productID);
+		} catch (SQLException e) {
+			throw new ProductNotFoundException("Der kunne ikke findes nogle produkter med det fundne produktID");
+		}
+		return product;
 	}
 
-	public ArrayList<Product> findAllProductsByType(String type) throws SQLException, DataAccessException {
+	public ArrayList<Product> findAllProductsByType(String type) throws DataAccessException, ProductNotFoundException {
 		ArrayList<Product> products = null;
-		if (type == "appetizer" || type == "forret" || type == "hovedret" || type == "dessert/ost") {
-			products = productDB.findAllDishesOfType(type);
-		}
-		else if (type == "mousserende vin" || type == "rosévin" || type == "hvidvin" || type == "rødvin" || type == "øl" || type == "sodavand" || type == "thy øko saft" || type == "varme drikke" || type == "dessertvin og avec") {
-			products = productDB.findAllDrinkOfType(type);
-		}
-		else {
-			products = productDB.findAllProductsByType(type);
+		try {
+			if (type == "appetizer" || type == "forret" || type == "hovedret" || type == "dessert/ost") {
+				products = productDB.findAllDishesOfType(type);
+			}
+			else if (type == "mousserende vin" || type == "rosévin" || type == "hvidvin" || type == "rødvin" || type == "øl" || type == "sodavand" || type == "thy øko saft" || type == "varme drikke" || type == "dessertvin og avec") {
+				products = productDB.findAllDrinkOfType(type);
+			}
+			else {
+				products = productDB.findAllProductsByType(type);
+			}
+		} catch (SQLException e) {
+			throw new ProductNotFoundException("Der kunne ikke findes nogle produkter af den valgte type");
 		}
 		return products;
 	}
@@ -61,7 +74,7 @@ public class ProductController {
 		int index = 0;
 		while(!found && index < tempProducts.size()) {
 			product = tempProducts.get(index);
-			if (product.getName().equals(product)) {
+			if (product.getName().equals(productName)) {
 				found = true;
 			} else {
 				index++;
@@ -70,7 +83,26 @@ public class ProductController {
 		return product;
 	}
 
-	public void saveMenu(Product menu) throws DataAccessException, SQLException {
-		productDB.saveMenuProduct(menu);
+	public void saveMenu(Product menu) throws Exception {
+		try {
+			productDB.saveMenuProduct(menu);
+		} catch (SQLException e) {
+			throw new Exception("Kunne ikke gemme menuen på databasen, prøv igen");
+		}
+	}
+
+	public void setCurrentOrder(Order order) {
+		orderController.setCurrentOrder(order);
+		
+	}
+
+	public void addProductToOrder(int productID, int quantity) throws ProductNotFoundException, DataAccessException, NullPointerException {
+		Product product = null;
+		product = findProductByID(productID);
+		orderController.addProductToOrder(product, quantity);
+	}
+
+	public void addMenuToOrder(Product menu) {
+		orderController.addMenuToOrder(menu);
 	}
 }
