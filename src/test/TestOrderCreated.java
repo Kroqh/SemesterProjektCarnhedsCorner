@@ -1,6 +1,8 @@
 package test;
 
 import controller.OrderController;
+import controller.ProductController;
+import model.Product;
 import model.TableContainer;
 
 import org.junit.*;
@@ -8,14 +10,12 @@ public class TestOrderCreated {
 
 	
 	OrderController orderController;
-	int tablesForTest = 8;
+	ProductController productController;
 	
 	@Before
 	public void setUp() {
 		orderController = new OrderController();
-		for (int i = 0; i < tablesForTest; i++) {
-			  TableContainer.getInstance().addTable();
-			}
+		productController = new ProductController();
 	}
 	
 	@Test
@@ -24,9 +24,11 @@ public class TestOrderCreated {
 		
 		
 		try {
-			orderController.createOrder(0);
-			orderController.addProductToOrder(1, 5);
-			orderController.addProductToOrder(2, 2);
+			orderController.createOrder(2);
+			Product p = productController.findProductByID(13);
+			Product p2 = productController.findProductByID(14);
+			orderController.addProductToOrder(p, 5);
+			orderController.addProductToOrder(p2, 2);
 			orderController.saveOrder(orderController.getCurrentOrder().getTotalPrice());
 		} catch (Exception e) {
 			Assert.fail("Exception " + e);
